@@ -1,0 +1,46 @@
+# Gradle / JVM
+.gradle/
+.kotlin/
+**/build/
+*.class
+
+# Node / Vite
+**/node_modules/
+**/dist/
+**/coverage/
+
+# Local runtime state and IDE files
+**/.sessions/
+*.local
+.env
+.env.*
+!.env.example
+!.env.template
+.envrc
+.DS_Store
+.idea/
+*.iml
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Local assistant/tool state
+.agents/
+.codex/
+.claude/
+.cursor/
+.antigravity/
+.aider/
+.continue/
+.windsurf/
+
+# Local review notes
+BLOCKERS.md
+
+# Test reports
+**/test-results/
+**/playwright-report/
+**/blob-report/

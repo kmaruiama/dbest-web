@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: web (lint, build, unit)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: app/client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/client/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run format:check
+      - run: npm run test:unit
+
+  jvm:
+    name: jvm (server + engine tests, jar)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/client/package-lock.json
+      - name: Install frontend deps
+        working-directory: app/client
+        run: npm ci
+      - run: ./gradlew check bundledJar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dbest-jar
+          path: app/server/build/libs/dbest-*.jar
+          if-no-files-found: error
+          retention-days: 1
+
+  contract:
+    name: contract (client <-> real backend)
+    needs: jvm
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/client/package-lock.json
+      - uses: actions/download-artifact@v4
+        with:
+          name: dbest-jar
+          path: dbest-jar
+      - id: jar
+        run: echo "path=$(ls "$PWD"/dbest-jar/dbest-*.jar)" >> "$GITHUB_OUTPUT"
+      - name: Install frontend deps
+        working-directory: app/client
+        run: npm ci
+      - name: Contract tier
+        working-directory: app/client
+        env:
+          DBEST_JAR: ${{ steps.jar.outputs.path }}
+        run: npm run test:contract
+
+  e2e:
+    name: e2e (browser health suite)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: app/client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/client/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: app/client/playwright-report/
+          retention-days: 7

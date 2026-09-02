@@ -1,0 +1,44 @@
+{
+  "name": "dbest-client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "npm run test:unit",
+    "test:unit": "vitest run",
+    "test:unit:cov": "vitest run --coverage",
+    "test:contract": "vitest run --config vitest.config.contract.ts",
+    "test:e2e": "node tests/health/run.mjs",
+    "test:watch": "vitest",
+    "health": "node tests/health/run.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@xyflow/react": "^12.8.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "@vitest/coverage-v8": "^4.1.11",
+    "esbuild": "^0.25.12",
+    "eslint": "^10.9.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.11.0",
+    "prettier": "3.9.6",
+    "typescript": "^5.8.0",
+    "typescript-eslint": "^8.68.0",
+    "vite": "^6.3.0",
+    "vitest": "4.1.11"
+  }
+}
