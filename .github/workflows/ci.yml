@@ -50,14 +50,13 @@ jobs:
           node-version: "22"
           cache: npm
           cache-dependency-path: app/client/package-lock.json
-      - name: Install frontend deps
-        working-directory: app/client
-        run: npm ci
       - run: ./gradlew check bundledJar
       - uses: actions/upload-artifact@v4
         with:
           name: dbest-jar
-          path: app/server/build/libs/dbest-*.jar
+          path: |
+            build/libs/dbest-*.jar
+            !build/libs/*-web.jar
           if-no-files-found: error
           retention-days: 1
 

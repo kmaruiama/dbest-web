@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "dbest"
 
 include(":modules:engine")
+include(":app:client")
 include(":app:server")

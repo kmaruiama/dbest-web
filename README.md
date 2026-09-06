@@ -25,18 +25,17 @@ The graph may be incomplete while it is being edited. Only a node with all requi
 - `app/client` is the React/Vite browser client. It renders the canvas and forms, decodes server responses defensively, and streams or pages result rows.
 - `app/server` is the Kotlin application. It owns workspaces, graph history, persistence, HTTP routes, table handles, the plan adapter, and the single execution queue.
 - `modules/engine` is the Java DBest engine. Its `Operation` classes and table implementations perform the actual relational work.
-- `Makefile` is the intended top-level interface for local setup, running, testing, and building.
+- `Makefile` is the intended top-level interface for running, testing, and building.
 
 ## Run locally
 
 Prerequisites: JDK 17 and Node.js 22 (the versions used in CI). From a clean clone:
 
 ```bash
-make setup
 make run
 ```
 
-`make run` builds the client, packages it into the server resources, and starts the integrated application on the loopback interface at `http://localhost:8000` by default. Set `PORT` to choose a different port.
+`make run` installs locked client dependencies when needed, builds the client, and starts the integrated application with its assets on the classpath. The root Gradle project owns this assembly; the server builds independently. The application listens on the loopback interface at `http://localhost:8000` by default. Set `PORT` to choose a different port.
 
 Useful commands:
 
@@ -45,7 +44,7 @@ make test-unit       # JVM suites and client unit tests
 make test-contract   # client protocol against a self-booted backend
 make test-e2e        # Playwright browser health suite
 make verify          # unit + contract + client lint/build/format check
-make build           # app/server/build/libs/dbest-0.1.0-SNAPSHOT.jar
+make build           # build/libs/dbest-0.1.0-SNAPSHOT.jar
 ```
 
 The browser suite needs Playwright's Chromium browser. CI installs it with `cd app/client && npx playwright install --with-deps chromium`; on a development machine, install Chromium with Playwright using the command appropriate for the operating system before `make test-e2e`.

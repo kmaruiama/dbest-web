@@ -18,24 +18,23 @@ On systems where `--with-deps` is unsuitable, install the browser and dependenci
 From the repository root:
 
 ```bash
-make setup
 make run
 ```
 
-`make setup` runs `npm ci` in `app/client`. `make run` invokes `./gradlew :app:server:run`; Gradle's resource processing first runs the client's `npm run build`, then serves the built client from the Kotlin server. The server binds only to the loopback interface and defaults to port 8000. Override it with, for example, `PORT=8080 make run`.
+`make run` invokes `./gradlew :run`; the root project consumes the client build as web resources and the server as a runtime dependency. The client's Gradle build installs locked npm dependencies when needed before running `npm run build`. No separate setup command is required. The server binds only to the loopback interface and defaults to port 8000. Override it with, for example, `PORT=8080 make run`.
 
-For browser-only UI work, `cd app/client && npm run dev` starts Vite on port 5274 and proxies API requests to `http://localhost:8000` unless `DBEST_API_URL` is set. Start the server separately for that mode.
+For browser-only UI work, install dependencies once with `./gradlew :app:client:npmInstall`, then `cd app/client && npm run dev` starts Vite on port 5274 and proxies API requests to `http://localhost:8000` unless `DBEST_API_URL` is set. Start the API separately with `./gradlew :app:server:run`; server builds and tests do not invoke npm or include web assets.
 
 ## Tests and verification
 
-The root Makefile is the supported command surface.
+The root Makefile is the supported command surface. Client test and formatting targets also install dependencies through Gradle when needed.
 
 For the complete setup, test, Playwright, client, Gradle, and recovery command
 reference, see [Command reference](commands.md).
 
 | Command              | What it runs                                                                                                                                        |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `make test-unit`     | `./gradlew check`, then client Vitest unit tests                                                                                                    |
+| `make test-unit`     | Gradle JVM checks and npm dependency installation, then client Vitest unit tests                                                                    |
 | `make test-contract` | Client Vitest contract tests; they build or use `DBEST_JAR`, boot the actual server JAR, and exercise client-facing routes and operator definitions |
 | `make test-e2e`      | Playwright health suite; it builds an application distribution, starts backend plus Vite in isolated temporary state, and drives the browser        |
 | `make verify`        | Unit tests, contract tests, ESLint, TypeScript/Vite build, and Prettier check                                                                       |
@@ -58,11 +57,13 @@ make fmt     # write client Prettier formatting
 make clean   # remove Gradle outputs and app/client/dist
 ```
 
-`make build` runs `:app:server:bundledJar` and produces `app/server/build/libs/dbest-0.1.0-SNAPSHOT.jar` at the current project version. The JAR includes the backend, DBest engine classes, dependencies, and built client assets. It can be started with:
+`make build` runs `:bundledJar` and produces `build/libs/dbest-0.1.0-SNAPSHOT.jar` at the current project version. The JAR includes the backend, DBest engine classes, dependencies, and built client assets. It can be started with:
 
 ```bash
-java -jar app/server/build/libs/dbest-0.1.0-SNAPSHOT.jar
+java -jar build/libs/dbest-0.1.0-SNAPSHOT.jar
 ```
+
+For a distribution with separate dependency JARs, use `./gradlew :installDist` and run `build/install/dbest/bin/dbest` (`dbest.bat` on Windows). The root's `dbest-*-web.jar` contains only client resources for this distribution. `:app:server:installDist` remains API-only for the browser test harness, which starts Vite separately.
 
 Client linting and format checking are included in `make verify`; their direct commands are `npm run lint` and `npm run format:check` from `app/client`.
 

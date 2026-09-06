@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 
 const CLIENT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const REPO_DIR = resolve(CLIENT_DIR, "../..");
-const LIBS_DIR = join(REPO_DIR, "app", "server", "build", "libs");
+const LIBS_DIR = join(REPO_DIR, "build", "libs");
 const READY = /PORTA:\s*(\S+)/;
 const BOOT_TIMEOUT_MS = 90_000;
 
@@ -36,21 +36,17 @@ function findJava(): string {
 
 function buildJar(): string {
   const gradle = process.platform === "win32" ? "gradlew.bat" : "./gradlew";
-  const built = spawnSync(
-    gradle,
-    [":app:server:bundledJar", "-q", "--console=plain"],
-    {
-      cwd: REPO_DIR,
-      encoding: "utf8",
-      timeout: 600_000,
-    },
-  );
+  const built = spawnSync(gradle, [":bundledJar", "-q", "--console=plain"], {
+    cwd: REPO_DIR,
+    encoding: "utf8",
+    timeout: 600_000,
+  });
   if (built.status !== 0)
     throw new Error(
-      `gradle :app:server:bundledJar failed:\n${built.stdout ?? ""}${built.stderr ?? ""}`,
+      `gradle :bundledJar failed:\n${built.stdout ?? ""}${built.stderr ?? ""}`,
     );
   const jar = readdirSync(LIBS_DIR)
-    .filter((name) => /^dbest.*\.jar$/.test(name))
+    .filter((name) => /^dbest.*\.jar$/.test(name) && !name.endsWith("-web.jar"))
     .sort()
     .at(-1);
   if (jar === undefined) throw new Error(`no dbest*.jar in ${LIBS_DIR}`);
