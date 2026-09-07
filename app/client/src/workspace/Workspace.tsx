@@ -86,7 +86,12 @@ export function Workspace({ sid, onMutate, onSave }: Props) {
   const connect = (edge: Edge) => sendCommand({ kind: "connect", edge });
   const openEditWith = async (id: NodeId, latest: Session) => {
     const node = latest.nodes.get(id);
-    if (node === undefined || !isEditable(node.kind)) return;
+    if (node === undefined) return;
+    if (node.kind === "table") {
+      dispatch({ kind: "renameAlias", id, current: String(node.fields.alias) });
+      return;
+    }
+    if (!isEditable(node.kind)) return;
     try {
       const columns = await columnsFeeding(sid, latest, id);
       dispatch({ kind: "edit", id, node, columns });
@@ -248,6 +253,16 @@ export function Workspace({ sid, onMutate, onSave }: Props) {
     });
     stop();
   };
+  const renameTableAlias = (id: NodeId, alias: string) => {
+    const node = session.nodes.get(id);
+    if (node === undefined) return;
+    void sendCommand({
+      kind: "setNode",
+      id,
+      node: { kind: "table", fields: { ...node.fields, alias } },
+    });
+    stop();
+  };
   const addTable = async (spec: TableSpec) => {
     const id = mint(session.tables.keys(), tableWatermark);
     const result = await sendCommand({ kind: "addTable", id, spec });
@@ -385,10 +400,19 @@ export function Workspace({ sid, onMutate, onSave }: Props) {
 
       {interaction.kind === "namingAlias" && (
         <AliasDialog
+          initial=""
           onCancel={stop}
           onConfirm={(alias) =>
             confirmScan(interaction.table, interaction.at, alias)
           }
+        />
+      )}
+
+      {interaction.kind === "renamingAlias" && (
+        <AliasDialog
+          initial={interaction.current}
+          onCancel={stop}
+          onConfirm={(alias) => renameTableAlias(interaction.id, alias)}
         />
       )}
 

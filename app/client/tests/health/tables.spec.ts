@@ -33,3 +33,23 @@ test("a hand-typed memory table scans back the rows that were entered", async ({
     ["2", "two"],
   ]);
 });
+
+test("a table node's alias can be renamed after it is placed", async ({
+  page,
+  boot,
+}) => {
+  const { canvas, results } = await boot(["emp"]);
+  const node = await canvas.addTable("emp", "e", { x: 160, y: 140 });
+  await canvas.select(node);
+  await canvas.node(node).getByTestId("node-edit").click();
+  const input = page.getByTestId("alias-input");
+  await expect(input).toHaveValue("e");
+  await input.fill("people");
+  await page.getByTestId("alias-confirm").click();
+  await expect(input).toBeHidden();
+  await canvas.run(node);
+  const read = await results.readAll();
+  expect(read.schema.every((column) => column.startsWith("people."))).toBe(
+    true,
+  );
+});

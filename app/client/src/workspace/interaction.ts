@@ -18,6 +18,11 @@ export type Interaction =
       at: Position;
     }
   | {
+      kind: "renamingAlias";
+      id: NodeId;
+      current: string;
+    }
+  | {
       kind: "linking";
       from: NodeId;
     }
@@ -67,6 +72,11 @@ export type InteractionAction =
       at: Position;
     }
   | {
+      kind: "renameAlias";
+      id: NodeId;
+      current: string;
+    }
+  | {
       kind: "edit";
       id: NodeId;
       node: PlanNode;
@@ -113,6 +123,15 @@ export function reduce(
           kind: "namingAlias",
           table: action.table,
           at: action.at,
+        },
+        notice: state.notice,
+      };
+    case "renameAlias":
+      return {
+        interaction: {
+          kind: "renamingAlias",
+          id: action.id,
+          current: action.current,
         },
         notice: state.notice,
       };

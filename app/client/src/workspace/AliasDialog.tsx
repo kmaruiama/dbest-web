@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useTranslation } from "../i18n";
 
 type Props = {
+  initial: string;
   onCancel: () => void;
   onConfirm: (alias: string) => void;
 };
 
-export function AliasDialog({ onCancel, onConfirm }: Props) {
+export function AliasDialog({ initial, onCancel, onConfirm }: Props) {
   const translate = useTranslation();
-  const [draft, setDraft] = useState("");
+  const [draft, setDraft] = useState(initial);
+  const renaming = initial.length > 0;
   const alias = draft.trim();
   const handleConfirm = () => {
     if (alias.length > 0) onConfirm(alias);
@@ -20,7 +22,7 @@ export function AliasDialog({ onCancel, onConfirm }: Props) {
   return (
     <div className="overlay" onMouseDown={onCancel}>
       <div className="dialog" onMouseDown={(event) => event.stopPropagation()}>
-        <h2>{translate("nameAlias")}</h2>
+        <h2>{translate(renaming ? "renameAlias" : "nameAlias")}</h2>
         <input
           autoFocus
           data-testid="alias-input"
@@ -40,7 +42,7 @@ export function AliasDialog({ onCancel, onConfirm }: Props) {
             disabled={alias.length === 0}
             onClick={handleConfirm}
           >
-            {translate("create")}
+            {translate(renaming ? "save" : "create")}
           </button>
         </div>
       </div>

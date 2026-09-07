@@ -71,7 +71,7 @@ export function projectNodes(
         trouble.get(id) ??
         (glyph.known ? null : view.translate("unknownVariant")),
       dimmed: targets !== null && id !== view.linkingFrom && !targets.has(id),
-      editable: isEditable(node.kind),
+      editable: isEditable(node.kind) || node.kind === "table",
       onStartLink: () => actions.onStartLink(id),
       onEdit: () => actions.onEdit(id),
       onRun: () => actions.onRun(id),

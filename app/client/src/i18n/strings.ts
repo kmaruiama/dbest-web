@@ -113,6 +113,10 @@ export const strings: Record<string, Record<Lang, string>> = {
     "en-US": "Name this table's alias",
     "pt-BR": "Nomeie o alias desta tabela",
   },
+  renameAlias: {
+    "en-US": "Rename this table's alias",
+    "pt-BR": "Renomeie o alias desta tabela",
+  },
   aliasPlaceholder: { "en-US": "e.g. o", "pt-BR": "ex.: p" },
   noTables: { "en-US": "no tables yet", "pt-BR": "nenhuma tabela ainda" },
   newTable: { "en-US": "new table", "pt-BR": "nova tabela" },
