@@ -9,7 +9,6 @@ import type {
 } from "../server/types";
 import { linkTargets } from "../workspace/graph";
 import type { BoxData } from "./NodeBox";
-import { flip, type Axis } from "./orientation";
 
 const NO_CAPTION: Caption = { expression: "" };
 
@@ -20,7 +19,6 @@ function samePosition(left: Position | undefined, right: Position): boolean {
 }
 
 export type FlowView = {
-  axis: Axis;
   showEngineClass: boolean;
   showExpression: boolean;
   linkingFrom: NodeId | null;
@@ -38,7 +36,6 @@ export type NodeActions = {
 
 export type Since = {
   layout: Map<NodeId, Position>;
-  axis: Axis;
 };
 
 export function projectNodes(
@@ -54,7 +51,6 @@ export function projectNodes(
   for (const problem of view.problems) {
     trouble.set(problem.node, problem.message);
   }
-  const axisChanged = since.axis !== view.axis;
   const drawn: BoxNode[] = [];
   for (const [id, node] of session.nodes) {
     const glyph = symbolOf(node);
@@ -82,10 +78,8 @@ export function projectNodes(
       id: String(id),
       type: "box",
       position:
-        existing === undefined ||
-        axisChanged ||
-        !samePosition(since.layout.get(id), at)
-          ? flip(at, view.axis)
+        existing === undefined || !samePosition(since.layout.get(id), at)
+          ? at
           : existing.position,
       selected: existing?.selected ?? false,
       data,
@@ -100,6 +94,7 @@ export function projectEdges(session: Session): FlowEdge[] {
     source: String(edge.from),
     target: String(edge.to),
     sourceHandle: "out",
-    targetHandle: edge.port,
+    targetHandle: "in",
+    data: { port: edge.port },
   }));
 }

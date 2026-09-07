@@ -7,7 +7,6 @@ import {
   type NodeActions,
   type Since,
 } from "../../../src/canvas/projection";
-import { flip } from "../../../src/canvas/orientation";
 import { installCatalog } from "../../../src/server/catalog";
 import type { Catalog, NodeId, Port, Session } from "../../../src/server/types";
 
@@ -45,7 +44,6 @@ const ACTIONS: NodeActions = {
 };
 
 const baseView: FlowView = {
-  axis: "TB",
   showEngineClass: true,
   showExpression: true,
   linkingFrom: null,
@@ -75,7 +73,7 @@ const project = (
   s: Session,
   view: Partial<FlowView> = {},
   previous: Map<string, BoxNode> = new Map(),
-  since: Since = { layout: new Map(), axis: "TB" },
+  since: Since = { layout: new Map() },
 ) => projectNodes(s, { ...baseView, ...view }, ACTIONS, previous, since);
 
 const faceOf = (box: BoxNode) => ({
@@ -93,7 +91,7 @@ const faceOf = (box: BoxNode) => ({
 
 const FILTER_FACE = {
   id: "1",
-  position: flip({ x: 0, y: 0 }, "TB"),
+  position: { x: 0, y: 0 },
   symbol: "σ",
   engineClass: "Filter" as string | null,
   expression: "a > 1",
@@ -105,10 +103,10 @@ const FILTER_FACE = {
 };
 
 describe("projectNodes", () => {
-  it("carries the caption, glyph and flipped position onto the box", () => {
+  it("carries the caption, glyph and position onto the box", () => {
     expect(faceOf(project(filterAt(1, 10, 20))[0])).toEqual({
       ...FILTER_FACE,
-      position: flip({ x: 10, y: 20 }, "TB"),
+      position: { x: 10, y: 20 },
     });
   });
 
@@ -173,7 +171,7 @@ describe("projectNodes", () => {
     expect(dimmed).toEqual({ "1": false, "2": true, "3": false });
   });
 
-  it("keeps an existing position until the axis or the stored layout changes", () => {
+  it("keeps an existing position until the stored layout changes", () => {
     const s = filterAt(1, 10, 20);
     const previous = new Map<string, BoxNode>([
       [
@@ -189,15 +187,13 @@ describe("projectNodes", () => {
 
     const kept = projectNodes(s, baseView, ACTIONS, previous, {
       layout: new Map([[1, { x: 10, y: 20 }]]),
-      axis: "TB",
     });
     expect(kept[0].position).toEqual({ x: 999, y: 999 });
 
     const moved = projectNodes(s, baseView, ACTIONS, previous, {
       layout: new Map([[1, { x: 0, y: 0 }]]),
-      axis: "TB",
     });
-    expect(moved[0].position).toEqual(flip({ x: 10, y: 20 }, "TB"));
+    expect(moved[0].position).toEqual({ x: 10, y: 20 });
   });
 });
 
@@ -210,7 +206,8 @@ describe("projectEdges", () => {
         source: "1",
         target: "2",
         sourceHandle: "out",
-        targetHandle: "LEFT",
+        targetHandle: "in",
+        data: { port: "LEFT" },
       },
     ]);
   });

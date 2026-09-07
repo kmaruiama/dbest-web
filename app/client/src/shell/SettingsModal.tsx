@@ -1,5 +1,4 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { AXES, isAxis } from "../canvas/orientation";
 import { isLang, useLang, useSetLang, useTranslation } from "../i18n";
 import { LANGS } from "../i18n/strings";
 import { useSettings } from "./settings";
@@ -55,24 +54,6 @@ function SettingsModal({ onClose }: Props) {
         onMouseDown={(event) => event.stopPropagation()}
       >
         <h2>{translate("settings")}</h2>
-
-        <div className="field">
-          <label>{translate("axis")}</label>
-          <select
-            className="chrome-select"
-            value={settings.axis}
-            onChange={(event) => {
-              if (isAxis(event.target.value))
-                settings.update({ axis: event.target.value });
-            }}
-          >
-            {AXES.map((key) => (
-              <option key={key} value={key}>
-                {translate(`axis.${key}`)}
-              </option>
-            ))}
-          </select>
-        </div>
 
         <div className="field">
           <label>{translate("theme")}</label>

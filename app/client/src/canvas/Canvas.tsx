@@ -1,9 +1,11 @@
 import {
   Background,
+  MarkerType,
   ReactFlow,
   SelectionMode,
   useReactFlow,
   type Edge as FlowEdge,
+  type EdgeTypes,
   type Node as FlowNode,
   type NodeMouseHandler,
   type OnNodeDrag,
@@ -20,8 +22,8 @@ import type {
 } from "../server/types";
 import { useSettings } from "../shell/settings";
 import { CHIP_MIME, TABLE_MIME } from "./dnd";
+import { FloatingEdge } from "./FloatingEdge";
 import { NodeBox } from "./NodeBox";
-import { flip } from "./orientation";
 import {
   projectEdges,
   projectNodes,
@@ -31,6 +33,11 @@ import {
 } from "./projection";
 
 const NODE_TYPES = { box: NodeBox };
+const EDGE_TYPES: EdgeTypes = { floating: FloatingEdge };
+const DEFAULT_EDGE_OPTIONS = {
+  type: "floating",
+  markerEnd: { type: MarkerType.ArrowClosed },
+};
 const EMPTY_NODES: FlowNode[] = [];
 const EMPTY_EDGES: FlowEdge[] = [];
 
@@ -56,13 +63,12 @@ type Props = {
 export function Canvas(props: Props) {
   const { session, captions, problems, linkingFrom } = props;
   const translate = useTranslation();
-  const { axis, showEngineClass, showExpression } = useSettings();
+  const { showEngineClass, showExpression } = useSettings();
   const [cursor, setCursor] = useState<Position | null>(null);
   const handlers = useRef(props);
   handlers.current = props;
-  const since = useRef<Since>({ layout: new Map(), axis });
+  const since = useRef<Since>({ layout: new Map() });
   const fitted = useRef(false);
-  const shownAxis = useRef(axis);
   const flow = useReactFlow();
   const actions = useRef<NodeActions>({
     onStartLink: (id) => handlers.current.onStartLink(id),
@@ -77,7 +83,7 @@ export function Canvas(props: Props) {
           const at = session.layout.get(linkingFrom);
           if (at === undefined) return null;
           return {
-            from: flow.flowToScreenPosition(flip(at, axis)),
+            from: flow.flowToScreenPosition(at),
             to: cursor,
           };
         })();
@@ -87,7 +93,7 @@ export function Canvas(props: Props) {
       x: event.clientX,
       y: event.clientY,
     });
-    const at = flip({ x: Math.round(raw.x), y: Math.round(raw.y) }, axis);
+    const at = { x: Math.round(raw.x), y: Math.round(raw.y) };
     const key = event.dataTransfer.getData(CHIP_MIME);
     if (key.length > 0) return handlers.current.onDropChip(key, at);
     const table = event.dataTransfer.getData(TABLE_MIME);
@@ -103,22 +109,15 @@ export function Canvas(props: Props) {
   const handleNodeDragStop: OnNodeDrag = (_event, _node, dragged) => {
     const moves = new Map<NodeId, Position>();
     for (const node of dragged) {
-      moves.set(
-        Number(node.id),
-        flip(
-          {
-            x: Math.round(node.position.x),
-            y: Math.round(node.position.y),
-          },
-          axis,
-        ),
-      );
+      moves.set(Number(node.id), {
+        x: Math.round(node.position.x),
+        y: Math.round(node.position.y),
+      });
     }
     handlers.current.onMove(moves);
   };
   useEffect(() => {
     const view = {
-      axis,
       showEngineClass,
       showExpression,
       linkingFrom,
@@ -135,14 +134,13 @@ export function Canvas(props: Props) {
       return projectNodes(session, view, actions, previous, since.current);
     });
     flow.setEdges(projectEdges(session));
-    since.current = { layout: new Map(session.layout), axis };
+    since.current = { layout: new Map(session.layout) };
   }, [
     session,
     captions,
     problems,
     translate,
     linkingFrom,
-    axis,
     showEngineClass,
     showExpression,
     flow,
@@ -163,11 +161,6 @@ export function Canvas(props: Props) {
     fitted.current = true;
     window.requestAnimationFrame(() => flow.fitView({ padding: 0.2 }));
   }, [session.nodes.size, flow]);
-  useEffect(() => {
-    if (shownAxis.current === axis) return;
-    shownAxis.current = axis;
-    window.requestAnimationFrame(() => flow.fitView({ padding: 0.2 }));
-  }, [axis, flow]);
   return (
     <div
       className="flow"
@@ -178,6 +171,8 @@ export function Canvas(props: Props) {
         defaultNodes={EMPTY_NODES}
         defaultEdges={EMPTY_EDGES}
         nodeTypes={NODE_TYPES}
+        edgeTypes={EDGE_TYPES}
+        defaultEdgeOptions={DEFAULT_EDGE_OPTIONS}
         nodesConnectable={false}
         elementsSelectable
         selectionOnDrag

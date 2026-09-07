@@ -1,8 +1,6 @@
-import { Handle, useStore, type NodeProps } from "@xyflow/react";
+import { Handle, Position, useStore, type NodeProps } from "@xyflow/react";
 import { useTranslation } from "../i18n";
 import type { Port } from "../server/types";
-import { useAxis } from "../shell/settings";
-import { portOffset, SIDES } from "./orientation";
 import type { BoxNode } from "./projection";
 
 export type BoxData = {
@@ -23,8 +21,6 @@ export type BoxData = {
 export function NodeBox({ data, selected }: NodeProps<BoxNode>) {
   const box = data;
   const translate = useTranslation();
-  const axis = useAxis();
-  const sides = SIDES[axis];
   const solo = useStore(
     (state) =>
       state.nodes.reduce(
@@ -32,7 +28,7 @@ export function NodeBox({ data, selected }: NodeProps<BoxNode>) {
         0,
       ) === 1,
   );
-  const classes = ["node-box", `axis-${axis.toLowerCase()}`];
+  const classes = ["node-box"];
   if (box.ports.length === 0) classes.push("source");
   if (box.ports.length > 1) classes.push("binary");
   if (box.problem !== null) classes.push("has-problem");
@@ -40,26 +36,15 @@ export function NodeBox({ data, selected }: NodeProps<BoxNode>) {
   if (box.dimmed) classes.push("dimmed");
   return (
     <div className={classes.join(" ")} title={box.problem ?? undefined}>
-      {box.ports.map((port, index) => (
+      {box.ports.length > 0 && (
         <Handle
-          key={port}
-          id={port}
+          id="in"
           type="target"
-          position={sides.in}
+          position={Position.Top}
           className="port"
-          style={portOffset(axis, index, box.ports.length)}
+          isConnectable={false}
         />
-      ))}
-      {box.ports.length > 1 &&
-        box.ports.map((port, index) => (
-          <span
-            key={`${port}-mark`}
-            className="port-mark"
-            style={portOffset(axis, index, box.ports.length)}
-          >
-            {translate(`port.${port}`)}
-          </span>
-        ))}
+      )}
 
       {selected && (
         <div
@@ -113,7 +98,13 @@ export function NodeBox({ data, selected }: NodeProps<BoxNode>) {
       {box.expression.length > 0 && (
         <div className="node-caption">{box.expression}</div>
       )}
-      <Handle id="out" type="source" position={sides.out} className="port" />
+      <Handle
+        id="out"
+        type="source"
+        position={Position.Bottom}
+        className="port"
+        isConnectable={false}
+      />
     </div>
   );
 }

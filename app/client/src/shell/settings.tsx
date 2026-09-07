@@ -5,7 +5,6 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { initialAxis, rememberAxis, type Axis } from "../canvas/orientation";
 import { applyTheme, initialTheme, type Theme } from "./theme";
 
 const PALETTE_VISIBLE_KEY = "dbest.palette.visible";
@@ -13,7 +12,6 @@ const ENGINE_CLASS_KEY = "dbest.caption.class";
 const EXPRESSION_KEY = "dbest.caption.expression";
 
 export type Settings = {
-  axis: Axis;
   theme: Theme;
   paletteVisible: boolean;
   showEngineClass: boolean;
@@ -30,8 +28,8 @@ function storedFlag(key: string, fallback: boolean): boolean {
 }
 
 function initialSettings(): Settings {
+  localStorage.removeItem("dbest.axis");
   return {
-    axis: initialAxis(),
     theme: initialTheme(),
     paletteVisible: storedFlag(PALETTE_VISIBLE_KEY, true),
     showEngineClass: storedFlag(ENGINE_CLASS_KEY, false),
@@ -40,7 +38,6 @@ function initialSettings(): Settings {
 }
 
 function persist(patch: Partial<Settings>): void {
-  if (patch.axis !== undefined) rememberAxis(patch.axis);
   if (patch.theme !== undefined) applyTheme(patch.theme);
   if (patch.paletteVisible !== undefined) {
     localStorage.setItem(PALETTE_VISIBLE_KEY, String(patch.paletteVisible));
@@ -83,8 +80,4 @@ export function SettingsProvider({ children }: Props) {
 
 export function useSettings(): Store {
   return useContext(SettingsContext);
-}
-
-export function useAxis(): Axis {
-  return useContext(SettingsContext).axis;
 }

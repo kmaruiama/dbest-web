@@ -25,17 +25,6 @@ export const strings: Record<string, Record<Lang, string>> = {
   },
   "port.LEFT": { "en-US": "LEFT", "pt-BR": "ESQ" },
   "port.RIGHT": { "en-US": "RIGHT", "pt-BR": "DIR" },
-  axis: { "en-US": "Direction", "pt-BR": "Direção" },
-  "axis.TB": { "en-US": "↓ Top to bottom", "pt-BR": "↓ De cima para baixo" },
-  "axis.BT": { "en-US": "↑ Bottom to top", "pt-BR": "↑ De baixo para cima" },
-  "axis.LR": {
-    "en-US": "→ Left to right",
-    "pt-BR": "→ Da esquerda para a direita",
-  },
-  "axis.RL": {
-    "en-US": "← Right to left",
-    "pt-BR": "← Da direita para a esquerda",
-  },
   theme: { "en-US": "Theme", "pt-BR": "Tema" },
   "theme.light": { "en-US": "Light", "pt-BR": "Claro" },
   "theme.rose": { "en-US": "Rosé", "pt-BR": "Rosé" },

@@ -375,6 +375,12 @@ aside.hidden .palette-head {
   --xy-connectionline-stroke: var(--accent);
 }
 
+.react-flow__arrowhead polyline,
+.react-flow__arrowhead path {
+  fill: var(--text-faint);
+  stroke: var(--text-faint);
+}
+
 .link-hint {
   position: absolute;
   top: 12px;
@@ -498,35 +504,19 @@ aside.hidden .palette-head {
   min-width: 0;
   min-height: 0;
   border: none;
-}
-
-.port-mark {
-  position: absolute;
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--text-faint);
-  white-space: nowrap;
   pointer-events: none;
 }
 
-.axis-tb .port-mark {
-  bottom: calc(100% + 3px);
-  transform: translateX(-50%);
-}
-
-.axis-bt .port-mark {
-  top: calc(100% + 3px);
-  transform: translateX(-50%);
-}
-
-.axis-lr .port-mark {
-  right: calc(100% + 4px);
-  transform: translateY(-50%);
-}
-
-.axis-rl .port-mark {
-  left: calc(100% + 4px);
-  transform: translateY(-50%);
+.port-mark {
+  fill: var(--text-faint);
+  font: 9px var(--mono);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
 }
 
 .node-tools {
@@ -537,10 +527,6 @@ aside.hidden .palette-head {
   display: flex;
   gap: 6px;
   z-index: 2;
-}
-
-.node-box.binary.axis-tb .node-tools {
-  bottom: calc(100% + 16px);
 }
 
 .node-tools button {

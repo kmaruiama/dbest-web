@@ -22,7 +22,6 @@ type Fixtures = {
 async function seedSettings(page: Page): Promise<void> {
   await page.addInitScript(() => {
     localStorage.setItem("dbest.lang", "en-US");
-    localStorage.setItem("dbest.axis", "TB");
     localStorage.setItem("dbest.theme", "light");
     localStorage.setItem("dbest.palette.visible", "true");
     localStorage.setItem("dbest.caption.expression", "true");
