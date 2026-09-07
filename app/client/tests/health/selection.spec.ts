@@ -1,5 +1,24 @@
 import { test, expect } from "./harness";
 
+test("operator categories can be collapsed and stay collapsed after reloading", async ({
+  page,
+  boot,
+}) => {
+  await boot([]);
+  const algebra = page.getByRole("button", { name: "Algebra" });
+  const filter = page.getByTestId("chip-filter");
+  await expect(filter).toBeVisible();
+  await algebra.click();
+  await expect(algebra).toHaveAttribute("aria-expanded", "false");
+  await expect(filter).toBeHidden();
+  await page.reload();
+  await expect(algebra).toHaveAttribute("aria-expanded", "false");
+  await expect(filter).toBeHidden();
+  await algebra.click();
+  await expect(algebra).toHaveAttribute("aria-expanded", "true");
+  await expect(filter).toBeVisible();
+});
+
 test("copy and paste create one undoable canvas change", async ({
   page,
   boot,

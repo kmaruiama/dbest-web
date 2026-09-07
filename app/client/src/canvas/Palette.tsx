@@ -13,6 +13,7 @@ type Props = {
 };
 
 const WIDTH_KEY = "dbest.palette.width";
+const COLLAPSED_CATEGORIES_KEY = "dbest.palette.collapsed-categories";
 const DEFAULT_WIDTH = 288;
 const MIN_WIDTH = 180;
 const MAX_WIDTH = 620;
@@ -25,6 +26,23 @@ function initialWidth(): number {
   return stored > 0 ? clampWidth(stored) : DEFAULT_WIDTH;
 }
 
+function initialCollapsedCategories(): Set<string> {
+  const stored = localStorage.getItem(COLLAPSED_CATEGORIES_KEY);
+  if (stored === null) return new Set();
+  try {
+    const categories = JSON.parse(stored);
+    return Array.isArray(categories)
+      ? new Set(
+          categories.filter(
+            (category): category is string => typeof category === "string",
+          ),
+        )
+      : new Set();
+  } catch {
+    return new Set();
+  }
+}
+
 export function Palette({
   session,
   onAddScan,
@@ -34,6 +52,9 @@ export function Palette({
   const translate = useTranslation();
   const label = useLabel();
   const [width, setWidth] = useState(initialWidth);
+  const [collapsedCategories, setCollapsedCategories] = useState(
+    initialCollapsedCategories,
+  );
   const drag = useRef<{
     x: number;
     width: number;
@@ -54,6 +75,15 @@ export function Palette({
     if (drag.current === null) return;
     drag.current = null;
     localStorage.setItem(WIDTH_KEY, String(width));
+  };
+  const toggleCategory = (category: string) => {
+    setCollapsedCategories((current) => {
+      const next = new Set(current);
+      if (next.has(category)) next.delete(category);
+      else next.add(category);
+      localStorage.setItem(COLLAPSED_CATEGORIES_KEY, JSON.stringify([...next]));
+      return next;
+    });
   };
   return (
     <aside
@@ -120,37 +150,60 @@ export function Palette({
             </div>
           ))}
 
-          {categories().map((category) => (
-            <div key={category}>
-              <div className="section-title">
-                {label(`category.${category}`, humanize(category))}
-              </div>
-              {chipsIn(category).map((chip) => {
-                const description = label(`opDesc.${chip.key}`, "");
-                return (
-                  <div
-                    className="op-item"
-                    key={chip.key}
-                    data-testid={`chip-${chip.key}`}
-                    draggable
-                    title={description}
-                    onDragStart={(event) => {
-                      event.dataTransfer.setData(CHIP_MIME, chip.key);
-                      event.dataTransfer.effectAllowed = "copy";
-                    }}
+          {categories().map((category) => {
+            const collapsed = collapsedCategories.has(category);
+            const categoryLabel = label(
+              `category.${category}`,
+              humanize(category),
+            );
+            const contentId = `palette-category-${category}`;
+            return (
+              <section className="palette-section" key={category}>
+                <h2 className="section-title">
+                  <button
+                    type="button"
+                    className="section-toggle"
+                    aria-expanded={!collapsed}
+                    aria-controls={contentId}
+                    onClick={() => toggleCategory(category)}
                   >
-                    <span className="op-symbol">{chip.symbol}</span>
-                    <span className="op-name">
-                      {label(`op.${chip.key}`, humanize(chip.key))}
+                    <span className="section-chevron" aria-hidden="true">
+                      {collapsed ? "▸" : "▾"}
                     </span>
-                    {description.length > 0 && (
-                      <span className="op-desc">{description}</span>
-                    )}
+                    {categoryLabel}
+                  </button>
+                </h2>
+                {!collapsed && (
+                  <div id={contentId}>
+                    {chipsIn(category).map((chip) => {
+                      const description = label(`opDesc.${chip.key}`, "");
+                      return (
+                        <div
+                          className="op-item"
+                          key={chip.key}
+                          data-testid={`chip-${chip.key}`}
+                          draggable
+                          title={description}
+                          onDragStart={(event) => {
+                            event.dataTransfer.setData(CHIP_MIME, chip.key);
+                            event.dataTransfer.effectAllowed = "copy";
+                          }}
+                        >
+                          <span className="op-symbol">{chip.symbol}</span>
+                          <span className="op-name">
+                            {label(`op.${chip.key}`, humanize(chip.key))}
+                          </span>
+                          {description.length > 0 && (
+                            <span className="op-desc">{description}</span>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
-          ))}
+                )}
+              </section>
+            );
+          })}
         </div>
       )}
     </aside>
