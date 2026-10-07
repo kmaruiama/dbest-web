@@ -1,0 +1,1119 @@
+{
+    "categories": [
+        "Algebra",
+        "Aggregation",
+        "ETL",
+        "Index",
+        "Joins",
+        "SemiAntiJoins",
+        "Sets",
+        "Boolean"
+    ],
+    "types": {
+        "filter": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "condition",
+                    "widget": "condition",
+                    "options": [
+                        "EQ",
+                        "NEQ",
+                        "GT",
+                        "GTE",
+                        "LT",
+                        "LTE"
+                    ]
+                }
+            ]
+        },
+        "project": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "columns",
+                    "widget": "list",
+                    "item": "column"
+                }
+            ]
+        },
+        "removeColumns": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "columns",
+                    "widget": "list",
+                    "item": "column"
+                }
+            ]
+        },
+        "alias": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "from",
+                    "widget": "column"
+                },
+                {
+                    "at": "to",
+                    "widget": "text"
+                }
+            ]
+        },
+        "sort": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "keys",
+                    "widget": "rows",
+                    "of": [
+                        {
+                            "at": "column",
+                            "widget": "column"
+                        },
+                        {
+                            "at": "ascending",
+                            "widget": "flag"
+                        }
+                    ]
+                }
+            ]
+        },
+        "limit": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "count",
+                    "widget": "int"
+                },
+                {
+                    "at": "offset",
+                    "widget": "int"
+                }
+            ]
+        },
+        "distinct": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "hashed",
+                    "widget": "flag"
+                }
+            ],
+            "variants": [
+                "hashed"
+            ]
+        },
+        "agg": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "by",
+                    "widget": "qualified",
+                    "nullable": true
+                },
+                {
+                    "at": "aggregates",
+                    "widget": "rows",
+                    "of": [
+                        {
+                            "at": "function",
+                            "widget": "pick",
+                            "options": [
+                                "MAX",
+                                "MIN",
+                                "COUNT",
+                                "AVG",
+                                "SUM",
+                                "FIRST",
+                                "LAST",
+                                "COUNT_ALL",
+                                "COUNT_NULL"
+                            ]
+                        },
+                        {
+                            "at": "column",
+                            "widget": "column"
+                        }
+                    ]
+                },
+                {
+                    "at": "hashed",
+                    "widget": "flag"
+                }
+            ]
+        },
+        "collapse": {
+            "arity": "unary",
+            "editable": false
+        },
+        "explode": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "column",
+                    "widget": "column"
+                },
+                {
+                    "at": "delimiter",
+                    "widget": "text"
+                }
+            ]
+        },
+        "rowNumber": {
+            "arity": "unary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "column",
+                    "widget": "text"
+                },
+                {
+                    "at": "start",
+                    "widget": "int"
+                }
+            ]
+        },
+        "hashIndex": {
+            "arity": "unary",
+            "editable": false
+        },
+        "memoize": {
+            "arity": "unary",
+            "editable": false
+        },
+        "materialize": {
+            "arity": "unary",
+            "editable": false
+        },
+        "scan": {
+            "arity": "unary",
+            "editable": false
+        },
+        "join": {
+            "arity": "binary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "type",
+                    "widget": "pick",
+                    "options": [
+                        "INNER",
+                        "LEFT",
+                        "RIGHT",
+                        "FULL",
+                        "LEFT_SEMI",
+                        "RIGHT_SEMI",
+                        "LEFT_ANTI",
+                        "RIGHT_ANTI"
+                    ]
+                },
+                {
+                    "at": "algorithm",
+                    "widget": "pick",
+                    "options": [
+                        "NESTED_LOOP",
+                        "HASH",
+                        "MERGE"
+                    ]
+                },
+                {
+                    "at": "on",
+                    "widget": "rows",
+                    "of": [
+                        {
+                            "at": "left",
+                            "widget": "qualified"
+                        },
+                        {
+                            "at": "right",
+                            "widget": "qualified"
+                        }
+                    ]
+                }
+            ],
+            "variants": [
+                "type",
+                "algorithm"
+            ]
+        },
+        "cross": {
+            "arity": "binary",
+            "editable": false
+        },
+        "setOp": {
+            "arity": "binary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "kind",
+                    "widget": "pick",
+                    "options": [
+                        "UNION",
+                        "INTERSECT",
+                        "EXCEPT",
+                        "APPEND"
+                    ]
+                },
+                {
+                    "at": "hashed",
+                    "widget": "flag"
+                }
+            ],
+            "variants": [
+                "kind",
+                "hashed"
+            ]
+        },
+        "exists": {
+            "arity": "binary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "bilateral",
+                    "widget": "flag"
+                }
+            ],
+            "variants": [
+                "bilateral"
+            ]
+        },
+        "logicalOp": {
+            "arity": "binary",
+            "editable": true,
+            "fields": [
+                {
+                    "at": "kind",
+                    "widget": "pick",
+                    "options": [
+                        "AND",
+                        "OR",
+                        "XOR"
+                    ]
+                }
+            ],
+            "variants": [
+                "kind"
+            ]
+        }
+    },
+    "operators": [
+        {
+            "key": "filter",
+            "type": "filter",
+            "symbol": "σ",
+            "category": "Algebra",
+            "template": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": null,
+                        "name": "?"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "str": "?"
+                    }
+                }
+            }
+        },
+        {
+            "key": "projection",
+            "type": "project",
+            "symbol": "π",
+            "category": "Algebra",
+            "template": {
+                "@type": "project",
+                "columns": [
+                    "?"
+                ]
+            }
+        },
+        {
+            "key": "selectColumns",
+            "type": "removeColumns",
+            "symbol": "S",
+            "category": "Algebra",
+            "template": {
+                "@type": "removeColumns",
+                "columns": [
+                    "?"
+                ],
+                "alias": "Projection"
+            }
+        },
+        {
+            "key": "rename",
+            "type": "alias",
+            "symbol": "ρ",
+            "category": "Algebra",
+            "template": {
+                "@type": "alias",
+                "from": "?",
+                "to": "?"
+            }
+        },
+        {
+            "key": "sort",
+            "type": "sort",
+            "symbol": "↕",
+            "category": "Algebra",
+            "template": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "?",
+                        "ascending": true
+                    }
+                ]
+            }
+        },
+        {
+            "key": "limit",
+            "type": "limit",
+            "symbol": "L",
+            "category": "Algebra",
+            "template": {
+                "@type": "limit",
+                "count": 10,
+                "offset": 0
+            }
+        },
+        {
+            "key": "duplicateRemoval",
+            "type": "distinct",
+            "symbol": "Δ",
+            "category": "Algebra",
+            "template": {
+                "@type": "distinct",
+                "hashed": false
+            }
+        },
+        {
+            "key": "hashDuplicateRemoval",
+            "type": "distinct",
+            "symbol": "#Δ",
+            "category": "Algebra",
+            "template": {
+                "@type": "distinct",
+                "hashed": true
+            }
+        },
+        {
+            "key": "aggregation",
+            "type": "agg",
+            "symbol": "∑",
+            "category": "Aggregation",
+            "template": {
+                "@type": "agg",
+                "alias": "agg",
+                "by": null,
+                "aggregates": [
+                    {
+                        "column": "?",
+                        "function": "COUNT"
+                    }
+                ],
+                "hashed": true
+            }
+        },
+        {
+            "key": "collapse",
+            "type": "collapse",
+            "symbol": "{}",
+            "category": "Aggregation",
+            "template": {
+                "@type": "collapse",
+                "alias": "collapse"
+            }
+        },
+        {
+            "key": "explode",
+            "type": "explode",
+            "symbol": "E",
+            "category": "ETL",
+            "template": {
+                "@type": "explode",
+                "column": "?",
+                "delimiter": ","
+            }
+        },
+        {
+            "key": "autoInc",
+            "type": "rowNumber",
+            "symbol": "A",
+            "category": "ETL",
+            "template": {
+                "@type": "rowNumber",
+                "alias": "row",
+                "column": "?",
+                "start": 1
+            }
+        },
+        {
+            "key": "hash",
+            "type": "hashIndex",
+            "symbol": "#",
+            "category": "Index",
+            "template": {
+                "@type": "hashIndex"
+            }
+        },
+        {
+            "key": "memoize",
+            "type": "memoize",
+            "symbol": "ℳ",
+            "category": "Index",
+            "template": {
+                "@type": "memoize"
+            }
+        },
+        {
+            "key": "materialization",
+            "type": "materialize",
+            "symbol": "⧉",
+            "category": "Index",
+            "template": {
+                "@type": "materialize"
+            }
+        },
+        {
+            "key": "scan",
+            "type": "scan",
+            "symbol": "→",
+            "category": "Index",
+            "template": {
+                "@type": "scan"
+            }
+        },
+        {
+            "key": "join",
+            "type": "join",
+            "symbol": "|X|",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "INNER",
+                "algorithm": "NESTED_LOOP"
+            }
+        },
+        {
+            "key": "mergeJoin",
+            "type": "join",
+            "symbol": "↕|X|",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "INNER",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "hashJoin",
+            "type": "join",
+            "symbol": "#|X|",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "INNER",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "leftOuterJoin",
+            "type": "join",
+            "symbol": "⟕",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT",
+                "algorithm": "NESTED_LOOP"
+            }
+        },
+        {
+            "key": "rightOuterJoin",
+            "type": "join",
+            "symbol": "⟖",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "RIGHT",
+                "algorithm": "NESTED_LOOP"
+            }
+        },
+        {
+            "key": "mergeLeftOuterJoin",
+            "type": "join",
+            "symbol": "↕⟕",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "mergeRightOuterJoin",
+            "type": "join",
+            "symbol": "↕⟖",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "RIGHT",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "mergeFullOuterJoin",
+            "type": "join",
+            "symbol": "↕⟗",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "FULL",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "hashLeftOuterJoin",
+            "type": "join",
+            "symbol": "#⟕",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "hashRightOuterJoin",
+            "type": "join",
+            "symbol": "#⟖",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "RIGHT",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "hashFullOuterJoin",
+            "type": "join",
+            "symbol": "#⟗",
+            "category": "Joins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "FULL",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "cartesianProduct",
+            "type": "cross",
+            "symbol": "✕",
+            "category": "Joins",
+            "template": {
+                "@type": "cross"
+            }
+        },
+        {
+            "key": "semiJoin",
+            "type": "join",
+            "symbol": "⋉",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT_SEMI",
+                "algorithm": "NESTED_LOOP"
+            }
+        },
+        {
+            "key": "mergeLeftSemiJoin",
+            "type": "join",
+            "symbol": "↕⋉",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT_SEMI",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "mergeRightSemiJoin",
+            "type": "join",
+            "symbol": "↕⋊",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "RIGHT_SEMI",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "hashLeftSemiJoin",
+            "type": "join",
+            "symbol": "#⋉",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT_SEMI",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "hashRightSemiJoin",
+            "type": "join",
+            "symbol": "#⋊",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "RIGHT_SEMI",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "antiJoin",
+            "type": "join",
+            "symbol": "▷",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT_ANTI",
+                "algorithm": "NESTED_LOOP"
+            }
+        },
+        {
+            "key": "mergeLeftAntiJoin",
+            "type": "join",
+            "symbol": "↕▷",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT_ANTI",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "mergeRightAntiJoin",
+            "type": "join",
+            "symbol": "↕◁",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "RIGHT_ANTI",
+                "algorithm": "MERGE"
+            }
+        },
+        {
+            "key": "hashLeftAntiJoin",
+            "type": "join",
+            "symbol": "#▷",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "LEFT_ANTI",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "hashRightAntiJoin",
+            "type": "join",
+            "symbol": "#◁",
+            "category": "SemiAntiJoins",
+            "template": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "?",
+                            "column": "?"
+                        },
+                        "right": {
+                            "source": "?",
+                            "column": "?"
+                        }
+                    }
+                ],
+                "type": "RIGHT_ANTI",
+                "algorithm": "HASH"
+            }
+        },
+        {
+            "key": "append",
+            "type": "setOp",
+            "symbol": "+",
+            "category": "Sets",
+            "template": {
+                "@type": "setOp",
+                "kind": "APPEND",
+                "hashed": false
+            }
+        },
+        {
+            "key": "union",
+            "type": "setOp",
+            "symbol": "∪",
+            "category": "Sets",
+            "template": {
+                "@type": "setOp",
+                "kind": "UNION",
+                "hashed": false
+            }
+        },
+        {
+            "key": "hashUnion",
+            "type": "setOp",
+            "symbol": "#∪",
+            "category": "Sets",
+            "template": {
+                "@type": "setOp",
+                "kind": "UNION",
+                "hashed": true
+            }
+        },
+        {
+            "key": "intersection",
+            "type": "setOp",
+            "symbol": "∩",
+            "category": "Sets",
+            "template": {
+                "@type": "setOp",
+                "kind": "INTERSECT",
+                "hashed": false
+            }
+        },
+        {
+            "key": "hashIntersection",
+            "type": "setOp",
+            "symbol": "#∩",
+            "category": "Sets",
+            "template": {
+                "@type": "setOp",
+                "kind": "INTERSECT",
+                "hashed": true
+            }
+        },
+        {
+            "key": "difference",
+            "type": "setOp",
+            "symbol": "-",
+            "category": "Sets",
+            "template": {
+                "@type": "setOp",
+                "kind": "EXCEPT",
+                "hashed": false
+            }
+        },
+        {
+            "key": "hashDifference",
+            "type": "setOp",
+            "symbol": "#-",
+            "category": "Sets",
+            "template": {
+                "@type": "setOp",
+                "kind": "EXCEPT",
+                "hashed": true
+            }
+        },
+        {
+            "key": "unilateralExistence",
+            "type": "exists",
+            "symbol": "∃⟗",
+            "category": "Sets",
+            "template": {
+                "@type": "exists",
+                "bilateral": false
+            }
+        },
+        {
+            "key": "bilateralExistence",
+            "type": "exists",
+            "symbol": "∃⨝",
+            "category": "Sets",
+            "template": {
+                "@type": "exists",
+                "bilateral": true
+            }
+        },
+        {
+            "key": "logicalAnd",
+            "type": "logicalOp",
+            "symbol": "∧",
+            "category": "Boolean",
+            "template": {
+                "@type": "logicalOp",
+                "kind": "AND"
+            }
+        },
+        {
+            "key": "logicalOr",
+            "type": "logicalOp",
+            "symbol": "∨",
+            "category": "Boolean",
+            "template": {
+                "@type": "logicalOp",
+                "kind": "OR"
+            }
+        },
+        {
+            "key": "logicalXor",
+            "type": "logicalOp",
+            "symbol": "⊻",
+            "category": "Boolean",
+            "template": {
+                "@type": "logicalOp",
+                "kind": "XOR"
+            }
+        }
+    ]
+}

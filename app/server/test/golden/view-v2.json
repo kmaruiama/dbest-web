@@ -1,0 +1,5453 @@
+{
+    "session": {
+        "tables": {
+            "1": {
+                "@type": "memory",
+                "name": "emp",
+                "columns": [
+                    {
+                        "name": "id",
+                        "type": "INT",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "dept",
+                        "type": "INT",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "tags",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": true
+                    }
+                ],
+                "rows": [
+                    {
+                        "id": {
+                            "int": 1
+                        },
+                        "name": {
+                            "str": "ana"
+                        },
+                        "dept": {
+                            "int": 10
+                        },
+                        "tags": {
+                            "str": "x;y"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 2
+                        },
+                        "name": {
+                            "str": "bob"
+                        },
+                        "dept": {
+                            "int": 20
+                        },
+                        "tags": {
+                            "str": "z"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 3
+                        },
+                        "name": {
+                            "str": "cid"
+                        },
+                        "dept": {
+                            "int": 10
+                        },
+                        "tags": {
+                            "str": "w"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 4
+                        },
+                        "name": {
+                            "str": "dan"
+                        },
+                        "dept": {
+                            "int": 40
+                        },
+                        "tags": {
+                            "str": "q"
+                        }
+                    }
+                ]
+            },
+            "2": {
+                "@type": "memory",
+                "name": "dep",
+                "columns": [
+                    {
+                        "name": "id",
+                        "type": "INT",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "city",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": false
+                    }
+                ],
+                "rows": [
+                    {
+                        "id": {
+                            "int": 10
+                        },
+                        "city": {
+                            "str": "sp"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 20
+                        },
+                        "city": {
+                            "str": "rj"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 30
+                        },
+                        "city": {
+                            "str": "bh"
+                        }
+                    }
+                ]
+            },
+            "3": {
+                "@type": "memory",
+                "name": "empkey",
+                "columns": [
+                    {
+                        "name": "id",
+                        "type": "INT",
+                        "primaryKey": true,
+                        "nullable": false
+                    },
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "dept",
+                        "type": "INT",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "tags",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": true
+                    }
+                ],
+                "rows": [
+                    {
+                        "id": {
+                            "int": 1
+                        },
+                        "name": {
+                            "str": "ana"
+                        },
+                        "dept": {
+                            "int": 10
+                        },
+                        "tags": {
+                            "str": "x;y"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 2
+                        },
+                        "name": {
+                            "str": "bob"
+                        },
+                        "dept": {
+                            "int": 20
+                        },
+                        "tags": {
+                            "str": "z"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 3
+                        },
+                        "name": {
+                            "str": "cid"
+                        },
+                        "dept": {
+                            "int": 10
+                        },
+                        "tags": {
+                            "str": "w"
+                        }
+                    },
+                    {
+                        "id": {
+                            "int": 4
+                        },
+                        "name": {
+                            "str": "dan"
+                        },
+                        "dept": {
+                            "int": 40
+                        },
+                        "tags": {
+                            "str": "q"
+                        }
+                    }
+                ]
+            },
+            "5": {
+                "@type": "csv",
+                "name": "csvfile",
+                "path": "data/missing.csv",
+                "columns": [
+                    {
+                        "name": "id",
+                        "type": "INT",
+                        "primaryKey": false,
+                        "nullable": false
+                    }
+                ],
+                "separator": ";",
+                "headerLine": 2
+            },
+            "6": {
+                "@type": "xml",
+                "name": "xmlfile",
+                "path": "data/missing.xml",
+                "columns": [
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": false
+                    }
+                ],
+                "rootElement": "people",
+                "recordElement": "person"
+            },
+            "7": {
+                "@type": "xml",
+                "name": "xmlauto",
+                "path": "data/auto.xml",
+                "columns": [
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": false
+                    }
+                ],
+                "rootElement": null,
+                "recordElement": null
+            },
+            "8": {
+                "@type": "btree",
+                "name": "tree",
+                "path": "data/missing.btree"
+            }
+        },
+        "nodes": {
+            "1": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "2": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "3": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "4": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "and",
+                    "conditions": [
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "e",
+                                "name": "id"
+                            },
+                            "op": "GTE",
+                            "right": {
+                                "int": 2
+                            }
+                        },
+                        {
+                            "@type": "or",
+                            "conditions": [
+                                {
+                                    "@type": "isNull",
+                                    "column": {
+                                        "source": "e",
+                                        "name": "tags"
+                                    }
+                                },
+                                {
+                                    "@type": "isNotNull",
+                                    "column": {
+                                        "source": "e",
+                                        "name": "name"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "e",
+                                "name": "id"
+                            },
+                            "op": "NEQ",
+                            "right": {
+                                "ref": "e.dept"
+                            }
+                        },
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "e",
+                                "name": "id"
+                            },
+                            "op": "LT",
+                            "right": {
+                                "long": 4
+                            }
+                        }
+                    ]
+                }
+            },
+            "5": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "6": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "name"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "str": "ana"
+                    }
+                }
+            },
+            "7": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "8": {
+                "@type": "project",
+                "columns": [
+                    "e.name"
+                ]
+            },
+            "9": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "10": {
+                "@type": "removeColumns",
+                "columns": [
+                    "e.tags"
+                ],
+                "alias": "P"
+            },
+            "11": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "12": {
+                "@type": "alias",
+                "from": "e",
+                "to": "x"
+            },
+            "13": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "14": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "15": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "16": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": false
+                    },
+                    {
+                        "column": "e.id",
+                        "ascending": false
+                    }
+                ]
+            },
+            "17": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "18": {
+                "@type": "limit",
+                "count": 2,
+                "offset": 1
+            },
+            "19": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "20": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "21": {
+                "@type": "project",
+                "columns": [
+                    "e.dept"
+                ]
+            },
+            "22": {
+                "@type": "distinct",
+                "hashed": false
+            },
+            "23": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "24": {
+                "@type": "project",
+                "columns": [
+                    "e.dept"
+                ]
+            },
+            "25": {
+                "@type": "distinct",
+                "hashed": true
+            },
+            "26": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "27": {
+                "@type": "agg",
+                "alias": "g",
+                "by": {
+                    "source": "e",
+                    "column": "dept"
+                },
+                "aggregates": [
+                    {
+                        "column": "e.id",
+                        "function": "COUNT"
+                    },
+                    {
+                        "column": "e.id",
+                        "function": "SUM"
+                    }
+                ],
+                "hashed": true
+            },
+            "28": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "29": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "30": {
+                "@type": "agg",
+                "alias": "g",
+                "by": {
+                    "source": "e",
+                    "column": "dept"
+                },
+                "aggregates": [
+                    {
+                        "column": "e.id",
+                        "function": "MAX"
+                    }
+                ],
+                "hashed": false
+            },
+            "31": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "32": {
+                "@type": "agg",
+                "alias": "g",
+                "by": null,
+                "aggregates": [
+                    {
+                        "column": "e.id",
+                        "function": "MAX"
+                    },
+                    {
+                        "column": "e.id",
+                        "function": "AVG"
+                    }
+                ],
+                "hashed": true
+            },
+            "33": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "34": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "35": {
+                "@type": "cross"
+            },
+            "36": {
+                "@type": "collapse",
+                "alias": "tudo"
+            },
+            "37": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "38": {
+                "@type": "explode",
+                "column": "e.tags",
+                "delimiter": ";"
+            },
+            "39": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "40": {
+                "@type": "rowNumber",
+                "alias": "r",
+                "column": "n",
+                "start": 5
+            },
+            "41": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "42": {
+                "@type": "hashIndex"
+            },
+            "43": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "44": {
+                "@type": "memoize"
+            },
+            "45": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "46": {
+                "@type": "materialize"
+            },
+            "47": {
+                "@type": "table",
+                "table": 3,
+                "alias": "k"
+            },
+            "48": {
+                "@type": "scan"
+            },
+            "49": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "k",
+                        "name": "id"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 1
+                    }
+                }
+            },
+            "50": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "51": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "52": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "53": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "54": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "INNER",
+                "algorithm": "NESTED_LOOP"
+            },
+            "55": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "56": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "57": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "58": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "59": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "INNER",
+                "algorithm": "HASH"
+            },
+            "60": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "61": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "62": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "63": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "64": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "INNER",
+                "algorithm": "MERGE"
+            },
+            "65": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "66": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "67": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "68": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "69": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT",
+                "algorithm": "NESTED_LOOP"
+            },
+            "70": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "71": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "72": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "73": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "74": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT",
+                "algorithm": "HASH"
+            },
+            "75": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "76": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "77": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "78": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "79": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT",
+                "algorithm": "MERGE"
+            },
+            "80": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "81": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "82": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "83": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "84": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT",
+                "algorithm": "NESTED_LOOP"
+            },
+            "85": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "86": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "87": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "88": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "89": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT",
+                "algorithm": "HASH"
+            },
+            "90": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "91": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "92": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "93": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "94": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT",
+                "algorithm": "MERGE"
+            },
+            "95": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "96": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "97": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "98": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "99": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "FULL",
+                "algorithm": "NESTED_LOOP"
+            },
+            "100": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "101": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "102": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "103": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "104": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "FULL",
+                "algorithm": "HASH"
+            },
+            "105": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "106": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "107": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "108": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "109": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "FULL",
+                "algorithm": "MERGE"
+            },
+            "110": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "111": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "112": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "113": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "114": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT_SEMI",
+                "algorithm": "NESTED_LOOP"
+            },
+            "115": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "116": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "117": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "118": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "119": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT_SEMI",
+                "algorithm": "HASH"
+            },
+            "120": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "121": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "122": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "123": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "124": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT_SEMI",
+                "algorithm": "MERGE"
+            },
+            "125": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "126": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "127": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "128": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "129": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT_SEMI",
+                "algorithm": "NESTED_LOOP"
+            },
+            "130": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "131": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "132": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "133": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "134": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT_SEMI",
+                "algorithm": "HASH"
+            },
+            "135": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "136": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "137": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "138": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "139": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT_SEMI",
+                "algorithm": "MERGE"
+            },
+            "140": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "141": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "142": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "143": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "144": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT_ANTI",
+                "algorithm": "NESTED_LOOP"
+            },
+            "145": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "146": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "147": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "148": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "149": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT_ANTI",
+                "algorithm": "HASH"
+            },
+            "150": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "151": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "152": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "153": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "154": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "LEFT_ANTI",
+                "algorithm": "MERGE"
+            },
+            "155": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "156": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "157": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "158": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "159": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT_ANTI",
+                "algorithm": "NESTED_LOOP"
+            },
+            "160": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "161": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "162": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "163": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "164": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT_ANTI",
+                "algorithm": "HASH"
+            },
+            "165": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "166": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "e.dept",
+                        "ascending": true
+                    }
+                ]
+            },
+            "167": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "168": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "d.id",
+                        "ascending": true
+                    }
+                ]
+            },
+            "169": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "RIGHT_ANTI",
+                "algorithm": "MERGE"
+            },
+            "170": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "171": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "172": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "173": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "174": {
+                "@type": "setOp",
+                "kind": "UNION",
+                "hashed": false
+            },
+            "175": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "176": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "177": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "178": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "179": {
+                "@type": "setOp",
+                "kind": "UNION",
+                "hashed": true
+            },
+            "180": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "181": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "182": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "183": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "184": {
+                "@type": "setOp",
+                "kind": "INTERSECT",
+                "hashed": false
+            },
+            "185": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "186": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "187": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "188": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "189": {
+                "@type": "setOp",
+                "kind": "INTERSECT",
+                "hashed": true
+            },
+            "190": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "191": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "192": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "193": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "194": {
+                "@type": "setOp",
+                "kind": "EXCEPT",
+                "hashed": false
+            },
+            "195": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "196": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "197": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "198": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "199": {
+                "@type": "setOp",
+                "kind": "EXCEPT",
+                "hashed": true
+            },
+            "200": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "201": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "202": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "203": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "204": {
+                "@type": "setOp",
+                "kind": "APPEND",
+                "hashed": false
+            },
+            "205": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "206": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "207": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "208": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "id"
+                    },
+                    "op": "GT",
+                    "right": {
+                        "int": 2
+                    }
+                }
+            },
+            "209": {
+                "@type": "setOp",
+                "kind": "APPEND",
+                "hashed": true
+            },
+            "210": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "211": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "212": {
+                "@type": "cross"
+            },
+            "213": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "214": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "215": {
+                "@type": "cross"
+            },
+            "216": {
+                "@type": "setOp",
+                "kind": "UNION",
+                "hashed": false
+            },
+            "217": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "218": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "219": {
+                "@type": "setOp",
+                "kind": "APPEND",
+                "hashed": false
+            },
+            "220": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "221": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "222": {
+                "@type": "exists",
+                "bilateral": false
+            },
+            "223": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "224": {
+                "@type": "table",
+                "table": 2,
+                "alias": "d"
+            },
+            "225": {
+                "@type": "exists",
+                "bilateral": true
+            },
+            "226": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "227": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "228": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "229": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 99
+                    }
+                }
+            },
+            "230": {
+                "@type": "logicalOp",
+                "kind": "AND"
+            },
+            "231": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "232": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "233": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "234": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 99
+                    }
+                }
+            },
+            "235": {
+                "@type": "logicalOp",
+                "kind": "OR"
+            },
+            "236": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "237": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 10
+                    }
+                }
+            },
+            "238": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "239": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 99
+                    }
+                }
+            },
+            "240": {
+                "@type": "logicalOp",
+                "kind": "XOR"
+            },
+            "241": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "242": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "salary"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 1
+                    }
+                }
+            },
+            "243": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "cmp",
+                    "left": {
+                        "source": "e",
+                        "name": "dept"
+                    },
+                    "op": "EQ",
+                    "right": {
+                        "int": 1
+                    }
+                }
+            },
+            "244": {
+                "@type": "table",
+                "table": 1,
+                "alias": "e"
+            },
+            "245": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "e",
+                            "column": "dept"
+                        },
+                        "right": {
+                            "source": "d",
+                            "column": "id"
+                        }
+                    }
+                ],
+                "type": "INNER",
+                "algorithm": "NESTED_LOOP"
+            }
+        },
+        "edges": [
+            {
+                "from": 1,
+                "to": 2,
+                "port": "ONLY"
+            },
+            {
+                "from": 3,
+                "to": 4,
+                "port": "ONLY"
+            },
+            {
+                "from": 5,
+                "to": 6,
+                "port": "ONLY"
+            },
+            {
+                "from": 7,
+                "to": 8,
+                "port": "ONLY"
+            },
+            {
+                "from": 9,
+                "to": 10,
+                "port": "ONLY"
+            },
+            {
+                "from": 11,
+                "to": 12,
+                "port": "ONLY"
+            },
+            {
+                "from": 13,
+                "to": 14,
+                "port": "ONLY"
+            },
+            {
+                "from": 15,
+                "to": 16,
+                "port": "ONLY"
+            },
+            {
+                "from": 17,
+                "to": 18,
+                "port": "ONLY"
+            },
+            {
+                "from": 19,
+                "to": 20,
+                "port": "ONLY"
+            },
+            {
+                "from": 20,
+                "to": 21,
+                "port": "ONLY"
+            },
+            {
+                "from": 21,
+                "to": 22,
+                "port": "ONLY"
+            },
+            {
+                "from": 23,
+                "to": 24,
+                "port": "ONLY"
+            },
+            {
+                "from": 24,
+                "to": 25,
+                "port": "ONLY"
+            },
+            {
+                "from": 26,
+                "to": 27,
+                "port": "ONLY"
+            },
+            {
+                "from": 28,
+                "to": 29,
+                "port": "ONLY"
+            },
+            {
+                "from": 29,
+                "to": 30,
+                "port": "ONLY"
+            },
+            {
+                "from": 31,
+                "to": 32,
+                "port": "ONLY"
+            },
+            {
+                "from": 33,
+                "to": 35,
+                "port": "LEFT"
+            },
+            {
+                "from": 34,
+                "to": 35,
+                "port": "RIGHT"
+            },
+            {
+                "from": 35,
+                "to": 36,
+                "port": "ONLY"
+            },
+            {
+                "from": 37,
+                "to": 38,
+                "port": "ONLY"
+            },
+            {
+                "from": 39,
+                "to": 40,
+                "port": "ONLY"
+            },
+            {
+                "from": 41,
+                "to": 42,
+                "port": "ONLY"
+            },
+            {
+                "from": 43,
+                "to": 44,
+                "port": "ONLY"
+            },
+            {
+                "from": 45,
+                "to": 46,
+                "port": "ONLY"
+            },
+            {
+                "from": 47,
+                "to": 48,
+                "port": "ONLY"
+            },
+            {
+                "from": 48,
+                "to": 49,
+                "port": "ONLY"
+            },
+            {
+                "from": 50,
+                "to": 51,
+                "port": "ONLY"
+            },
+            {
+                "from": 52,
+                "to": 53,
+                "port": "ONLY"
+            },
+            {
+                "from": 51,
+                "to": 54,
+                "port": "LEFT"
+            },
+            {
+                "from": 53,
+                "to": 54,
+                "port": "RIGHT"
+            },
+            {
+                "from": 55,
+                "to": 56,
+                "port": "ONLY"
+            },
+            {
+                "from": 57,
+                "to": 58,
+                "port": "ONLY"
+            },
+            {
+                "from": 56,
+                "to": 59,
+                "port": "LEFT"
+            },
+            {
+                "from": 58,
+                "to": 59,
+                "port": "RIGHT"
+            },
+            {
+                "from": 60,
+                "to": 61,
+                "port": "ONLY"
+            },
+            {
+                "from": 62,
+                "to": 63,
+                "port": "ONLY"
+            },
+            {
+                "from": 61,
+                "to": 64,
+                "port": "LEFT"
+            },
+            {
+                "from": 63,
+                "to": 64,
+                "port": "RIGHT"
+            },
+            {
+                "from": 65,
+                "to": 66,
+                "port": "ONLY"
+            },
+            {
+                "from": 67,
+                "to": 68,
+                "port": "ONLY"
+            },
+            {
+                "from": 66,
+                "to": 69,
+                "port": "LEFT"
+            },
+            {
+                "from": 68,
+                "to": 69,
+                "port": "RIGHT"
+            },
+            {
+                "from": 70,
+                "to": 71,
+                "port": "ONLY"
+            },
+            {
+                "from": 72,
+                "to": 73,
+                "port": "ONLY"
+            },
+            {
+                "from": 71,
+                "to": 74,
+                "port": "LEFT"
+            },
+            {
+                "from": 73,
+                "to": 74,
+                "port": "RIGHT"
+            },
+            {
+                "from": 75,
+                "to": 76,
+                "port": "ONLY"
+            },
+            {
+                "from": 77,
+                "to": 78,
+                "port": "ONLY"
+            },
+            {
+                "from": 76,
+                "to": 79,
+                "port": "LEFT"
+            },
+            {
+                "from": 78,
+                "to": 79,
+                "port": "RIGHT"
+            },
+            {
+                "from": 80,
+                "to": 81,
+                "port": "ONLY"
+            },
+            {
+                "from": 82,
+                "to": 83,
+                "port": "ONLY"
+            },
+            {
+                "from": 81,
+                "to": 84,
+                "port": "LEFT"
+            },
+            {
+                "from": 83,
+                "to": 84,
+                "port": "RIGHT"
+            },
+            {
+                "from": 85,
+                "to": 86,
+                "port": "ONLY"
+            },
+            {
+                "from": 87,
+                "to": 88,
+                "port": "ONLY"
+            },
+            {
+                "from": 86,
+                "to": 89,
+                "port": "LEFT"
+            },
+            {
+                "from": 88,
+                "to": 89,
+                "port": "RIGHT"
+            },
+            {
+                "from": 90,
+                "to": 91,
+                "port": "ONLY"
+            },
+            {
+                "from": 92,
+                "to": 93,
+                "port": "ONLY"
+            },
+            {
+                "from": 91,
+                "to": 94,
+                "port": "LEFT"
+            },
+            {
+                "from": 93,
+                "to": 94,
+                "port": "RIGHT"
+            },
+            {
+                "from": 95,
+                "to": 96,
+                "port": "ONLY"
+            },
+            {
+                "from": 97,
+                "to": 98,
+                "port": "ONLY"
+            },
+            {
+                "from": 96,
+                "to": 99,
+                "port": "LEFT"
+            },
+            {
+                "from": 98,
+                "to": 99,
+                "port": "RIGHT"
+            },
+            {
+                "from": 100,
+                "to": 101,
+                "port": "ONLY"
+            },
+            {
+                "from": 102,
+                "to": 103,
+                "port": "ONLY"
+            },
+            {
+                "from": 101,
+                "to": 104,
+                "port": "LEFT"
+            },
+            {
+                "from": 103,
+                "to": 104,
+                "port": "RIGHT"
+            },
+            {
+                "from": 105,
+                "to": 106,
+                "port": "ONLY"
+            },
+            {
+                "from": 107,
+                "to": 108,
+                "port": "ONLY"
+            },
+            {
+                "from": 106,
+                "to": 109,
+                "port": "LEFT"
+            },
+            {
+                "from": 108,
+                "to": 109,
+                "port": "RIGHT"
+            },
+            {
+                "from": 110,
+                "to": 111,
+                "port": "ONLY"
+            },
+            {
+                "from": 112,
+                "to": 113,
+                "port": "ONLY"
+            },
+            {
+                "from": 111,
+                "to": 114,
+                "port": "LEFT"
+            },
+            {
+                "from": 113,
+                "to": 114,
+                "port": "RIGHT"
+            },
+            {
+                "from": 115,
+                "to": 116,
+                "port": "ONLY"
+            },
+            {
+                "from": 117,
+                "to": 118,
+                "port": "ONLY"
+            },
+            {
+                "from": 116,
+                "to": 119,
+                "port": "LEFT"
+            },
+            {
+                "from": 118,
+                "to": 119,
+                "port": "RIGHT"
+            },
+            {
+                "from": 120,
+                "to": 121,
+                "port": "ONLY"
+            },
+            {
+                "from": 122,
+                "to": 123,
+                "port": "ONLY"
+            },
+            {
+                "from": 121,
+                "to": 124,
+                "port": "LEFT"
+            },
+            {
+                "from": 123,
+                "to": 124,
+                "port": "RIGHT"
+            },
+            {
+                "from": 125,
+                "to": 126,
+                "port": "ONLY"
+            },
+            {
+                "from": 127,
+                "to": 128,
+                "port": "ONLY"
+            },
+            {
+                "from": 126,
+                "to": 129,
+                "port": "LEFT"
+            },
+            {
+                "from": 128,
+                "to": 129,
+                "port": "RIGHT"
+            },
+            {
+                "from": 130,
+                "to": 131,
+                "port": "ONLY"
+            },
+            {
+                "from": 132,
+                "to": 133,
+                "port": "ONLY"
+            },
+            {
+                "from": 131,
+                "to": 134,
+                "port": "LEFT"
+            },
+            {
+                "from": 133,
+                "to": 134,
+                "port": "RIGHT"
+            },
+            {
+                "from": 135,
+                "to": 136,
+                "port": "ONLY"
+            },
+            {
+                "from": 137,
+                "to": 138,
+                "port": "ONLY"
+            },
+            {
+                "from": 136,
+                "to": 139,
+                "port": "LEFT"
+            },
+            {
+                "from": 138,
+                "to": 139,
+                "port": "RIGHT"
+            },
+            {
+                "from": 140,
+                "to": 141,
+                "port": "ONLY"
+            },
+            {
+                "from": 142,
+                "to": 143,
+                "port": "ONLY"
+            },
+            {
+                "from": 141,
+                "to": 144,
+                "port": "LEFT"
+            },
+            {
+                "from": 143,
+                "to": 144,
+                "port": "RIGHT"
+            },
+            {
+                "from": 145,
+                "to": 146,
+                "port": "ONLY"
+            },
+            {
+                "from": 147,
+                "to": 148,
+                "port": "ONLY"
+            },
+            {
+                "from": 146,
+                "to": 149,
+                "port": "LEFT"
+            },
+            {
+                "from": 148,
+                "to": 149,
+                "port": "RIGHT"
+            },
+            {
+                "from": 150,
+                "to": 151,
+                "port": "ONLY"
+            },
+            {
+                "from": 152,
+                "to": 153,
+                "port": "ONLY"
+            },
+            {
+                "from": 151,
+                "to": 154,
+                "port": "LEFT"
+            },
+            {
+                "from": 153,
+                "to": 154,
+                "port": "RIGHT"
+            },
+            {
+                "from": 155,
+                "to": 156,
+                "port": "ONLY"
+            },
+            {
+                "from": 157,
+                "to": 158,
+                "port": "ONLY"
+            },
+            {
+                "from": 156,
+                "to": 159,
+                "port": "LEFT"
+            },
+            {
+                "from": 158,
+                "to": 159,
+                "port": "RIGHT"
+            },
+            {
+                "from": 160,
+                "to": 161,
+                "port": "ONLY"
+            },
+            {
+                "from": 162,
+                "to": 163,
+                "port": "ONLY"
+            },
+            {
+                "from": 161,
+                "to": 164,
+                "port": "LEFT"
+            },
+            {
+                "from": 163,
+                "to": 164,
+                "port": "RIGHT"
+            },
+            {
+                "from": 165,
+                "to": 166,
+                "port": "ONLY"
+            },
+            {
+                "from": 167,
+                "to": 168,
+                "port": "ONLY"
+            },
+            {
+                "from": 166,
+                "to": 169,
+                "port": "LEFT"
+            },
+            {
+                "from": 168,
+                "to": 169,
+                "port": "RIGHT"
+            },
+            {
+                "from": 170,
+                "to": 171,
+                "port": "ONLY"
+            },
+            {
+                "from": 172,
+                "to": 173,
+                "port": "ONLY"
+            },
+            {
+                "from": 171,
+                "to": 174,
+                "port": "LEFT"
+            },
+            {
+                "from": 173,
+                "to": 174,
+                "port": "RIGHT"
+            },
+            {
+                "from": 175,
+                "to": 176,
+                "port": "ONLY"
+            },
+            {
+                "from": 177,
+                "to": 178,
+                "port": "ONLY"
+            },
+            {
+                "from": 176,
+                "to": 179,
+                "port": "LEFT"
+            },
+            {
+                "from": 178,
+                "to": 179,
+                "port": "RIGHT"
+            },
+            {
+                "from": 180,
+                "to": 181,
+                "port": "ONLY"
+            },
+            {
+                "from": 182,
+                "to": 183,
+                "port": "ONLY"
+            },
+            {
+                "from": 181,
+                "to": 184,
+                "port": "LEFT"
+            },
+            {
+                "from": 183,
+                "to": 184,
+                "port": "RIGHT"
+            },
+            {
+                "from": 185,
+                "to": 186,
+                "port": "ONLY"
+            },
+            {
+                "from": 187,
+                "to": 188,
+                "port": "ONLY"
+            },
+            {
+                "from": 186,
+                "to": 189,
+                "port": "LEFT"
+            },
+            {
+                "from": 188,
+                "to": 189,
+                "port": "RIGHT"
+            },
+            {
+                "from": 190,
+                "to": 191,
+                "port": "ONLY"
+            },
+            {
+                "from": 192,
+                "to": 193,
+                "port": "ONLY"
+            },
+            {
+                "from": 191,
+                "to": 194,
+                "port": "LEFT"
+            },
+            {
+                "from": 193,
+                "to": 194,
+                "port": "RIGHT"
+            },
+            {
+                "from": 195,
+                "to": 196,
+                "port": "ONLY"
+            },
+            {
+                "from": 197,
+                "to": 198,
+                "port": "ONLY"
+            },
+            {
+                "from": 196,
+                "to": 199,
+                "port": "LEFT"
+            },
+            {
+                "from": 198,
+                "to": 199,
+                "port": "RIGHT"
+            },
+            {
+                "from": 200,
+                "to": 201,
+                "port": "ONLY"
+            },
+            {
+                "from": 202,
+                "to": 203,
+                "port": "ONLY"
+            },
+            {
+                "from": 201,
+                "to": 204,
+                "port": "LEFT"
+            },
+            {
+                "from": 203,
+                "to": 204,
+                "port": "RIGHT"
+            },
+            {
+                "from": 205,
+                "to": 206,
+                "port": "ONLY"
+            },
+            {
+                "from": 207,
+                "to": 208,
+                "port": "ONLY"
+            },
+            {
+                "from": 206,
+                "to": 209,
+                "port": "LEFT"
+            },
+            {
+                "from": 208,
+                "to": 209,
+                "port": "RIGHT"
+            },
+            {
+                "from": 210,
+                "to": 212,
+                "port": "LEFT"
+            },
+            {
+                "from": 211,
+                "to": 212,
+                "port": "RIGHT"
+            },
+            {
+                "from": 213,
+                "to": 215,
+                "port": "LEFT"
+            },
+            {
+                "from": 214,
+                "to": 215,
+                "port": "RIGHT"
+            },
+            {
+                "from": 212,
+                "to": 216,
+                "port": "LEFT"
+            },
+            {
+                "from": 215,
+                "to": 216,
+                "port": "RIGHT"
+            },
+            {
+                "from": 217,
+                "to": 219,
+                "port": "LEFT"
+            },
+            {
+                "from": 218,
+                "to": 219,
+                "port": "RIGHT"
+            },
+            {
+                "from": 220,
+                "to": 222,
+                "port": "LEFT"
+            },
+            {
+                "from": 221,
+                "to": 222,
+                "port": "RIGHT"
+            },
+            {
+                "from": 223,
+                "to": 225,
+                "port": "LEFT"
+            },
+            {
+                "from": 224,
+                "to": 225,
+                "port": "RIGHT"
+            },
+            {
+                "from": 226,
+                "to": 227,
+                "port": "ONLY"
+            },
+            {
+                "from": 228,
+                "to": 229,
+                "port": "ONLY"
+            },
+            {
+                "from": 227,
+                "to": 230,
+                "port": "LEFT"
+            },
+            {
+                "from": 229,
+                "to": 230,
+                "port": "RIGHT"
+            },
+            {
+                "from": 231,
+                "to": 232,
+                "port": "ONLY"
+            },
+            {
+                "from": 233,
+                "to": 234,
+                "port": "ONLY"
+            },
+            {
+                "from": 232,
+                "to": 235,
+                "port": "LEFT"
+            },
+            {
+                "from": 234,
+                "to": 235,
+                "port": "RIGHT"
+            },
+            {
+                "from": 236,
+                "to": 237,
+                "port": "ONLY"
+            },
+            {
+                "from": 238,
+                "to": 239,
+                "port": "ONLY"
+            },
+            {
+                "from": 237,
+                "to": 240,
+                "port": "LEFT"
+            },
+            {
+                "from": 239,
+                "to": 240,
+                "port": "RIGHT"
+            },
+            {
+                "from": 241,
+                "to": 242,
+                "port": "ONLY"
+            },
+            {
+                "from": 244,
+                "to": 245,
+                "port": "LEFT"
+            }
+        ],
+        "layout": {
+            "1": {
+                "x": 5.0,
+                "y": 6.0
+            },
+            "2": {
+                "x": 140.0,
+                "y": 100.0
+            },
+            "3": {
+                "x": 210.0,
+                "y": 150.0
+            },
+            "4": {
+                "x": 280.0,
+                "y": 200.0
+            },
+            "5": {
+                "x": 350.0,
+                "y": 250.0
+            },
+            "6": {
+                "x": 420.0,
+                "y": 300.0
+            },
+            "7": {
+                "x": 490.0,
+                "y": 350.0
+            },
+            "8": {
+                "x": 560.0,
+                "y": 400.0
+            },
+            "9": {
+                "x": 630.0,
+                "y": 450.0
+            },
+            "10": {
+                "x": 700.0,
+                "y": 500.0
+            },
+            "11": {
+                "x": 770.0,
+                "y": 550.0
+            },
+            "12": {
+                "x": 840.0,
+                "y": 600.0
+            },
+            "13": {
+                "x": 910.0,
+                "y": 650.0
+            },
+            "14": {
+                "x": 980.0,
+                "y": 700.0
+            },
+            "15": {
+                "x": 1050.0,
+                "y": 750.0
+            },
+            "16": {
+                "x": 1120.0,
+                "y": 800.0
+            },
+            "17": {
+                "x": 1190.0,
+                "y": 850.0
+            },
+            "18": {
+                "x": 1260.0,
+                "y": 900.0
+            },
+            "19": {
+                "x": 1330.0,
+                "y": 950.0
+            },
+            "20": {
+                "x": 1400.0,
+                "y": 1000.0
+            },
+            "21": {
+                "x": 1470.0,
+                "y": 1050.0
+            },
+            "22": {
+                "x": 1540.0,
+                "y": 1100.0
+            },
+            "23": {
+                "x": 1610.0,
+                "y": 1150.0
+            },
+            "24": {
+                "x": 1680.0,
+                "y": 1200.0
+            },
+            "25": {
+                "x": 1750.0,
+                "y": 1250.0
+            },
+            "26": {
+                "x": 1820.0,
+                "y": 1300.0
+            },
+            "27": {
+                "x": 1890.0,
+                "y": 1350.0
+            },
+            "28": {
+                "x": 1960.0,
+                "y": 1400.0
+            },
+            "29": {
+                "x": 2030.0,
+                "y": 1450.0
+            },
+            "30": {
+                "x": 2100.0,
+                "y": 1500.0
+            },
+            "31": {
+                "x": 2170.0,
+                "y": 1550.0
+            },
+            "32": {
+                "x": 2240.0,
+                "y": 1600.0
+            },
+            "33": {
+                "x": 2310.0,
+                "y": 1650.0
+            },
+            "34": {
+                "x": 2380.0,
+                "y": 1700.0
+            },
+            "35": {
+                "x": 2450.0,
+                "y": 1750.0
+            },
+            "36": {
+                "x": 2520.0,
+                "y": 1800.0
+            },
+            "37": {
+                "x": 2590.0,
+                "y": 1850.0
+            },
+            "38": {
+                "x": 2660.0,
+                "y": 1900.0
+            },
+            "39": {
+                "x": 2730.0,
+                "y": 1950.0
+            },
+            "40": {
+                "x": 2800.0,
+                "y": 2000.0
+            },
+            "41": {
+                "x": 2870.0,
+                "y": 2050.0
+            },
+            "42": {
+                "x": 2940.0,
+                "y": 2100.0
+            },
+            "43": {
+                "x": 3010.0,
+                "y": 2150.0
+            },
+            "44": {
+                "x": 3080.0,
+                "y": 2200.0
+            },
+            "45": {
+                "x": 3150.0,
+                "y": 2250.0
+            },
+            "46": {
+                "x": 3220.0,
+                "y": 2300.0
+            },
+            "47": {
+                "x": 3290.0,
+                "y": 2350.0
+            },
+            "48": {
+                "x": 3360.0,
+                "y": 2400.0
+            },
+            "49": {
+                "x": 3430.0,
+                "y": 2450.0
+            },
+            "50": {
+                "x": 3500.0,
+                "y": 2500.0
+            },
+            "51": {
+                "x": 3570.0,
+                "y": 2550.0
+            },
+            "52": {
+                "x": 3640.0,
+                "y": 2600.0
+            },
+            "53": {
+                "x": 3710.0,
+                "y": 2650.0
+            },
+            "54": {
+                "x": 3780.0,
+                "y": 2700.0
+            },
+            "55": {
+                "x": 3850.0,
+                "y": 2750.0
+            },
+            "56": {
+                "x": 3920.0,
+                "y": 2800.0
+            },
+            "57": {
+                "x": 3990.0,
+                "y": 2850.0
+            },
+            "58": {
+                "x": 4060.0,
+                "y": 2900.0
+            },
+            "59": {
+                "x": 4130.0,
+                "y": 2950.0
+            },
+            "60": {
+                "x": 4200.0,
+                "y": 3000.0
+            },
+            "61": {
+                "x": 4270.0,
+                "y": 3050.0
+            },
+            "62": {
+                "x": 4340.0,
+                "y": 3100.0
+            },
+            "63": {
+                "x": 4410.0,
+                "y": 3150.0
+            },
+            "64": {
+                "x": 4480.0,
+                "y": 3200.0
+            },
+            "65": {
+                "x": 4550.0,
+                "y": 3250.0
+            },
+            "66": {
+                "x": 4620.0,
+                "y": 3300.0
+            },
+            "67": {
+                "x": 4690.0,
+                "y": 3350.0
+            },
+            "68": {
+                "x": 4760.0,
+                "y": 3400.0
+            },
+            "69": {
+                "x": 4830.0,
+                "y": 3450.0
+            },
+            "70": {
+                "x": 4900.0,
+                "y": 3500.0
+            },
+            "71": {
+                "x": 4970.0,
+                "y": 3550.0
+            },
+            "72": {
+                "x": 5040.0,
+                "y": 3600.0
+            },
+            "73": {
+                "x": 5110.0,
+                "y": 3650.0
+            },
+            "74": {
+                "x": 5180.0,
+                "y": 3700.0
+            },
+            "75": {
+                "x": 5250.0,
+                "y": 3750.0
+            },
+            "76": {
+                "x": 5320.0,
+                "y": 3800.0
+            },
+            "77": {
+                "x": 5390.0,
+                "y": 3850.0
+            },
+            "78": {
+                "x": 5460.0,
+                "y": 3900.0
+            },
+            "79": {
+                "x": 5530.0,
+                "y": 3950.0
+            },
+            "80": {
+                "x": 5600.0,
+                "y": 4000.0
+            },
+            "81": {
+                "x": 5670.0,
+                "y": 4050.0
+            },
+            "82": {
+                "x": 5740.0,
+                "y": 4100.0
+            },
+            "83": {
+                "x": 5810.0,
+                "y": 4150.0
+            },
+            "84": {
+                "x": 5880.0,
+                "y": 4200.0
+            },
+            "85": {
+                "x": 5950.0,
+                "y": 4250.0
+            },
+            "86": {
+                "x": 6020.0,
+                "y": 4300.0
+            },
+            "87": {
+                "x": 6090.0,
+                "y": 4350.0
+            },
+            "88": {
+                "x": 6160.0,
+                "y": 4400.0
+            },
+            "89": {
+                "x": 6230.0,
+                "y": 4450.0
+            },
+            "90": {
+                "x": 6300.0,
+                "y": 4500.0
+            },
+            "91": {
+                "x": 6370.0,
+                "y": 4550.0
+            },
+            "92": {
+                "x": 6440.0,
+                "y": 4600.0
+            },
+            "93": {
+                "x": 6510.0,
+                "y": 4650.0
+            },
+            "94": {
+                "x": 6580.0,
+                "y": 4700.0
+            },
+            "95": {
+                "x": 6650.0,
+                "y": 4750.0
+            },
+            "96": {
+                "x": 6720.0,
+                "y": 4800.0
+            },
+            "97": {
+                "x": 6790.0,
+                "y": 4850.0
+            },
+            "98": {
+                "x": 6860.0,
+                "y": 4900.0
+            },
+            "99": {
+                "x": 6930.0,
+                "y": 4950.0
+            },
+            "100": {
+                "x": 7000.0,
+                "y": 5000.0
+            },
+            "101": {
+                "x": 7070.0,
+                "y": 5050.0
+            },
+            "102": {
+                "x": 7140.0,
+                "y": 5100.0
+            },
+            "103": {
+                "x": 7210.0,
+                "y": 5150.0
+            },
+            "104": {
+                "x": 7280.0,
+                "y": 5200.0
+            },
+            "105": {
+                "x": 7350.0,
+                "y": 5250.0
+            },
+            "106": {
+                "x": 7420.0,
+                "y": 5300.0
+            },
+            "107": {
+                "x": 7490.0,
+                "y": 5350.0
+            },
+            "108": {
+                "x": 7560.0,
+                "y": 5400.0
+            },
+            "109": {
+                "x": 7630.0,
+                "y": 5450.0
+            },
+            "110": {
+                "x": 7700.0,
+                "y": 5500.0
+            },
+            "111": {
+                "x": 7770.0,
+                "y": 5550.0
+            },
+            "112": {
+                "x": 7840.0,
+                "y": 5600.0
+            },
+            "113": {
+                "x": 7910.0,
+                "y": 5650.0
+            },
+            "114": {
+                "x": 7980.0,
+                "y": 5700.0
+            },
+            "115": {
+                "x": 8050.0,
+                "y": 5750.0
+            },
+            "116": {
+                "x": 8120.0,
+                "y": 5800.0
+            },
+            "117": {
+                "x": 8190.0,
+                "y": 5850.0
+            },
+            "118": {
+                "x": 8260.0,
+                "y": 5900.0
+            },
+            "119": {
+                "x": 8330.0,
+                "y": 5950.0
+            },
+            "120": {
+                "x": 8400.0,
+                "y": 6000.0
+            },
+            "121": {
+                "x": 8470.0,
+                "y": 6050.0
+            },
+            "122": {
+                "x": 8540.0,
+                "y": 6100.0
+            },
+            "123": {
+                "x": 8610.0,
+                "y": 6150.0
+            },
+            "124": {
+                "x": 8680.0,
+                "y": 6200.0
+            },
+            "125": {
+                "x": 8750.0,
+                "y": 6250.0
+            },
+            "126": {
+                "x": 8820.0,
+                "y": 6300.0
+            },
+            "127": {
+                "x": 8890.0,
+                "y": 6350.0
+            },
+            "128": {
+                "x": 8960.0,
+                "y": 6400.0
+            },
+            "129": {
+                "x": 9030.0,
+                "y": 6450.0
+            },
+            "130": {
+                "x": 9100.0,
+                "y": 6500.0
+            },
+            "131": {
+                "x": 9170.0,
+                "y": 6550.0
+            },
+            "132": {
+                "x": 9240.0,
+                "y": 6600.0
+            },
+            "133": {
+                "x": 9310.0,
+                "y": 6650.0
+            },
+            "134": {
+                "x": 9380.0,
+                "y": 6700.0
+            },
+            "135": {
+                "x": 9450.0,
+                "y": 6750.0
+            },
+            "136": {
+                "x": 9520.0,
+                "y": 6800.0
+            },
+            "137": {
+                "x": 9590.0,
+                "y": 6850.0
+            },
+            "138": {
+                "x": 9660.0,
+                "y": 6900.0
+            },
+            "139": {
+                "x": 9730.0,
+                "y": 6950.0
+            },
+            "140": {
+                "x": 9800.0,
+                "y": 7000.0
+            },
+            "141": {
+                "x": 9870.0,
+                "y": 7050.0
+            },
+            "142": {
+                "x": 9940.0,
+                "y": 7100.0
+            },
+            "143": {
+                "x": 10010.0,
+                "y": 7150.0
+            },
+            "144": {
+                "x": 10080.0,
+                "y": 7200.0
+            },
+            "145": {
+                "x": 10150.0,
+                "y": 7250.0
+            },
+            "146": {
+                "x": 10220.0,
+                "y": 7300.0
+            },
+            "147": {
+                "x": 10290.0,
+                "y": 7350.0
+            },
+            "148": {
+                "x": 10360.0,
+                "y": 7400.0
+            },
+            "149": {
+                "x": 10430.0,
+                "y": 7450.0
+            },
+            "150": {
+                "x": 10500.0,
+                "y": 7500.0
+            },
+            "151": {
+                "x": 10570.0,
+                "y": 7550.0
+            },
+            "152": {
+                "x": 10640.0,
+                "y": 7600.0
+            },
+            "153": {
+                "x": 10710.0,
+                "y": 7650.0
+            },
+            "154": {
+                "x": 10780.0,
+                "y": 7700.0
+            },
+            "155": {
+                "x": 10850.0,
+                "y": 7750.0
+            },
+            "156": {
+                "x": 10920.0,
+                "y": 7800.0
+            },
+            "157": {
+                "x": 10990.0,
+                "y": 7850.0
+            },
+            "158": {
+                "x": 11060.0,
+                "y": 7900.0
+            },
+            "159": {
+                "x": 11130.0,
+                "y": 7950.0
+            },
+            "160": {
+                "x": 11200.0,
+                "y": 8000.0
+            },
+            "161": {
+                "x": 11270.0,
+                "y": 8050.0
+            },
+            "162": {
+                "x": 11340.0,
+                "y": 8100.0
+            },
+            "163": {
+                "x": 11410.0,
+                "y": 8150.0
+            },
+            "164": {
+                "x": 11480.0,
+                "y": 8200.0
+            },
+            "165": {
+                "x": 11550.0,
+                "y": 8250.0
+            },
+            "166": {
+                "x": 11620.0,
+                "y": 8300.0
+            },
+            "167": {
+                "x": 11690.0,
+                "y": 8350.0
+            },
+            "168": {
+                "x": 11760.0,
+                "y": 8400.0
+            },
+            "169": {
+                "x": 11830.0,
+                "y": 8450.0
+            },
+            "170": {
+                "x": 11900.0,
+                "y": 8500.0
+            },
+            "171": {
+                "x": 11970.0,
+                "y": 8550.0
+            },
+            "172": {
+                "x": 12040.0,
+                "y": 8600.0
+            },
+            "173": {
+                "x": 12110.0,
+                "y": 8650.0
+            },
+            "174": {
+                "x": 12180.0,
+                "y": 8700.0
+            },
+            "175": {
+                "x": 12250.0,
+                "y": 8750.0
+            },
+            "176": {
+                "x": 12320.0,
+                "y": 8800.0
+            },
+            "177": {
+                "x": 12390.0,
+                "y": 8850.0
+            },
+            "178": {
+                "x": 12460.0,
+                "y": 8900.0
+            },
+            "179": {
+                "x": 12530.0,
+                "y": 8950.0
+            },
+            "180": {
+                "x": 12600.0,
+                "y": 9000.0
+            },
+            "181": {
+                "x": 12670.0,
+                "y": 9050.0
+            },
+            "182": {
+                "x": 12740.0,
+                "y": 9100.0
+            },
+            "183": {
+                "x": 12810.0,
+                "y": 9150.0
+            },
+            "184": {
+                "x": 12880.0,
+                "y": 9200.0
+            },
+            "185": {
+                "x": 12950.0,
+                "y": 9250.0
+            },
+            "186": {
+                "x": 13020.0,
+                "y": 9300.0
+            },
+            "187": {
+                "x": 13090.0,
+                "y": 9350.0
+            },
+            "188": {
+                "x": 13160.0,
+                "y": 9400.0
+            },
+            "189": {
+                "x": 13230.0,
+                "y": 9450.0
+            },
+            "190": {
+                "x": 13300.0,
+                "y": 9500.0
+            },
+            "191": {
+                "x": 13370.0,
+                "y": 9550.0
+            },
+            "192": {
+                "x": 13440.0,
+                "y": 9600.0
+            },
+            "193": {
+                "x": 13510.0,
+                "y": 9650.0
+            },
+            "194": {
+                "x": 13580.0,
+                "y": 9700.0
+            },
+            "195": {
+                "x": 13650.0,
+                "y": 9750.0
+            },
+            "196": {
+                "x": 13720.0,
+                "y": 9800.0
+            },
+            "197": {
+                "x": 13790.0,
+                "y": 9850.0
+            },
+            "198": {
+                "x": 13860.0,
+                "y": 9900.0
+            },
+            "199": {
+                "x": 13930.0,
+                "y": 9950.0
+            },
+            "200": {
+                "x": 14000.0,
+                "y": 10000.0
+            },
+            "201": {
+                "x": 14070.0,
+                "y": 10050.0
+            },
+            "202": {
+                "x": 14140.0,
+                "y": 10100.0
+            },
+            "203": {
+                "x": 14210.0,
+                "y": 10150.0
+            },
+            "204": {
+                "x": 14280.0,
+                "y": 10200.0
+            },
+            "205": {
+                "x": 14350.0,
+                "y": 10250.0
+            },
+            "206": {
+                "x": 14420.0,
+                "y": 10300.0
+            },
+            "207": {
+                "x": 14490.0,
+                "y": 10350.0
+            },
+            "208": {
+                "x": 14560.0,
+                "y": 10400.0
+            },
+            "209": {
+                "x": 14630.0,
+                "y": 10450.0
+            },
+            "210": {
+                "x": 14700.0,
+                "y": 10500.0
+            },
+            "211": {
+                "x": 14770.0,
+                "y": 10550.0
+            },
+            "212": {
+                "x": 14840.0,
+                "y": 10600.0
+            },
+            "213": {
+                "x": 14910.0,
+                "y": 10650.0
+            },
+            "214": {
+                "x": 14980.0,
+                "y": 10700.0
+            },
+            "215": {
+                "x": 15050.0,
+                "y": 10750.0
+            },
+            "216": {
+                "x": 15120.0,
+                "y": 10800.0
+            },
+            "217": {
+                "x": 15190.0,
+                "y": 10850.0
+            },
+            "218": {
+                "x": 15260.0,
+                "y": 10900.0
+            },
+            "219": {
+                "x": 15330.0,
+                "y": 10950.0
+            },
+            "220": {
+                "x": 15400.0,
+                "y": 11000.0
+            },
+            "221": {
+                "x": 15470.0,
+                "y": 11050.0
+            },
+            "222": {
+                "x": 15540.0,
+                "y": 11100.0
+            },
+            "223": {
+                "x": 15610.0,
+                "y": 11150.0
+            },
+            "224": {
+                "x": 15680.0,
+                "y": 11200.0
+            },
+            "225": {
+                "x": 15750.0,
+                "y": 11250.0
+            },
+            "226": {
+                "x": 15820.0,
+                "y": 11300.0
+            },
+            "227": {
+                "x": 15890.0,
+                "y": 11350.0
+            },
+            "228": {
+                "x": 15960.0,
+                "y": 11400.0
+            },
+            "229": {
+                "x": 16030.0,
+                "y": 11450.0
+            },
+            "230": {
+                "x": 16100.0,
+                "y": 11500.0
+            },
+            "231": {
+                "x": 16170.0,
+                "y": 11550.0
+            },
+            "232": {
+                "x": 16240.0,
+                "y": 11600.0
+            },
+            "233": {
+                "x": 16310.0,
+                "y": 11650.0
+            },
+            "234": {
+                "x": 16380.0,
+                "y": 11700.0
+            },
+            "235": {
+                "x": 16450.0,
+                "y": 11750.0
+            },
+            "236": {
+                "x": 16520.0,
+                "y": 11800.0
+            },
+            "237": {
+                "x": 16590.0,
+                "y": 11850.0
+            },
+            "238": {
+                "x": 16660.0,
+                "y": 11900.0
+            },
+            "239": {
+                "x": 16730.0,
+                "y": 11950.0
+            },
+            "240": {
+                "x": 16800.0,
+                "y": 12000.0
+            },
+            "241": {
+                "x": 16870.0,
+                "y": 12050.0
+            },
+            "242": {
+                "x": 16940.0,
+                "y": 12100.0
+            },
+            "243": {
+                "x": 17010.0,
+                "y": 12150.0
+            },
+            "244": {
+                "x": 17080.0,
+                "y": 12200.0
+            },
+            "245": {
+                "x": 17150.0,
+                "y": 12250.0
+            }
+        }
+    },
+    "captions": {
+        "1": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "2": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "3": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "4": {
+            "engineClass": "Filter",
+            "expression": "e.id ≥ 2 AND (e.tags IS NULL OR e.name IS NOT NULL) AND e.id ≠ e.dept AND e.id < 4",
+            "alias": null
+        },
+        "5": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "6": {
+            "engineClass": "Filter",
+            "expression": "e.name = 'ana'",
+            "alias": null
+        },
+        "7": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "8": {
+            "engineClass": "Projection",
+            "expression": "e.name",
+            "alias": null
+        },
+        "9": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "10": {
+            "engineClass": "RemoveColumns",
+            "expression": "e.tags",
+            "alias": "P"
+        },
+        "11": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "12": {
+            "engineClass": "SourceRename",
+            "expression": "e → x",
+            "alias": null
+        },
+        "13": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "14": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "15": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "16": {
+            "engineClass": "Sort",
+            "expression": "e.dept DESC, e.id DESC",
+            "alias": null
+        },
+        "17": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "18": {
+            "engineClass": "Limit",
+            "expression": "2, 1",
+            "alias": null
+        },
+        "19": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "20": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "21": {
+            "engineClass": "Projection",
+            "expression": "e.dept",
+            "alias": null
+        },
+        "22": {
+            "engineClass": "DuplicateRemoval",
+            "expression": "",
+            "alias": null
+        },
+        "23": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "24": {
+            "engineClass": "Projection",
+            "expression": "e.dept",
+            "alias": null
+        },
+        "25": {
+            "engineClass": "HashDuplicateRemoval",
+            "expression": "",
+            "alias": null
+        },
+        "26": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "27": {
+            "engineClass": "HashAggregation",
+            "expression": "e.dept: count(e.id), sum(e.id)",
+            "alias": "g"
+        },
+        "28": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "29": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "30": {
+            "engineClass": "Aggregation",
+            "expression": "e.dept: max(e.id)",
+            "alias": "g"
+        },
+        "31": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "32": {
+            "engineClass": "AllAggregation",
+            "expression": "max(e.id), avg(e.id)",
+            "alias": "g"
+        },
+        "33": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "34": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "35": {
+            "engineClass": "CrossJoin",
+            "expression": "",
+            "alias": null
+        },
+        "36": {
+            "engineClass": "SourceRename1",
+            "expression": "",
+            "alias": "tudo"
+        },
+        "37": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "38": {
+            "engineClass": "Explode",
+            "expression": "e.tags",
+            "alias": null
+        },
+        "39": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "40": {
+            "engineClass": "AutoIncrement",
+            "expression": "n from 5",
+            "alias": "r"
+        },
+        "41": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "42": {
+            "engineClass": "HashIndex",
+            "expression": "",
+            "alias": null
+        },
+        "43": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "44": {
+            "engineClass": "Memoize",
+            "expression": "",
+            "alias": null
+        },
+        "45": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "46": {
+            "engineClass": "Materialization",
+            "expression": "",
+            "alias": null
+        },
+        "47": {
+            "engineClass": "IndexScan",
+            "expression": "empkey",
+            "alias": "k"
+        },
+        "48": {
+            "engineClass": "Scan",
+            "expression": "",
+            "alias": null
+        },
+        "49": {
+            "engineClass": "Filter",
+            "expression": "k.id = 1",
+            "alias": null
+        },
+        "50": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "51": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "52": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "53": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "54": {
+            "engineClass": "NestedLoopJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "55": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "56": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "57": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "58": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "59": {
+            "engineClass": "HashInnerJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "60": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "61": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "62": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "63": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "64": {
+            "engineClass": "MergeJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "65": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "66": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "67": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "68": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "69": {
+            "engineClass": "NestedLoopLeftJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "70": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "71": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "72": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "73": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "74": {
+            "engineClass": "HashLeftJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "75": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "76": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "77": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "78": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "79": {
+            "engineClass": "MergeLeftOuterJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "80": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "81": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "82": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "83": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "84": {
+            "engineClass": "NestedLoopRightJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "85": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "86": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "87": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "88": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "89": {
+            "engineClass": "HashRightJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "90": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "91": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "92": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "93": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "94": {
+            "engineClass": "MergeRightOuterJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "95": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "96": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "97": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "98": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "99": {
+            "engineClass": null,
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "100": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "101": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "102": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "103": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "104": {
+            "engineClass": "HashFullOuterJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "105": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "106": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "107": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "108": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "109": {
+            "engineClass": "MergeFullOuterJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "110": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "111": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "112": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "113": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "114": {
+            "engineClass": "NestedLoopSemiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "115": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "116": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "117": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "118": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "119": {
+            "engineClass": "HashLeftSemiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "120": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "121": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "122": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "123": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "124": {
+            "engineClass": "MergeLeftSemiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "125": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "126": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "127": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "128": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "129": {
+            "engineClass": null,
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "130": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "131": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "132": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "133": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "134": {
+            "engineClass": "HashRightSemiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "135": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "136": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "137": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "138": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "139": {
+            "engineClass": "MergeRightSemiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "140": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "141": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "142": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "143": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "144": {
+            "engineClass": "NestedLoopLeftAntiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "145": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "146": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "147": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "148": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "149": {
+            "engineClass": "HashLeftAntiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "150": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "151": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "152": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "153": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "154": {
+            "engineClass": "MergeLeftAntiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "155": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "156": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "157": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "158": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "159": {
+            "engineClass": null,
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "160": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "161": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "162": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "163": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "164": {
+            "engineClass": "HashRightAntiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "165": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "166": {
+            "engineClass": "Sort",
+            "expression": "e.dept ASC",
+            "alias": null
+        },
+        "167": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "168": {
+            "engineClass": "Sort",
+            "expression": "d.id ASC",
+            "alias": null
+        },
+        "169": {
+            "engineClass": "MergeRightAntiJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        },
+        "170": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "171": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "172": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "173": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "174": {
+            "engineClass": "Union",
+            "expression": "UNION",
+            "alias": ""
+        },
+        "175": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "176": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "177": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "178": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "179": {
+            "engineClass": "HashUnion",
+            "expression": "UNION",
+            "alias": ""
+        },
+        "180": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "181": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "182": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "183": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "184": {
+            "engineClass": "Intersection",
+            "expression": "INTERSECT",
+            "alias": null
+        },
+        "185": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "186": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "187": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "188": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "189": {
+            "engineClass": "HashIntersection",
+            "expression": "INTERSECT",
+            "alias": null
+        },
+        "190": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "191": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "192": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "193": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "194": {
+            "engineClass": "Difference",
+            "expression": "EXCEPT",
+            "alias": null
+        },
+        "195": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "196": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "197": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "198": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "199": {
+            "engineClass": "HashDifference",
+            "expression": "EXCEPT",
+            "alias": null
+        },
+        "200": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "201": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "202": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "203": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "204": {
+            "engineClass": "Append",
+            "expression": "APPEND",
+            "alias": ""
+        },
+        "205": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "206": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "207": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "208": {
+            "engineClass": "Filter",
+            "expression": "e.id > 2",
+            "alias": null
+        },
+        "209": {
+            "engineClass": "Append",
+            "expression": "APPEND",
+            "alias": ""
+        },
+        "210": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "211": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "212": {
+            "engineClass": "CrossJoin",
+            "expression": "",
+            "alias": null
+        },
+        "213": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "214": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "215": {
+            "engineClass": "CrossJoin",
+            "expression": "",
+            "alias": null
+        },
+        "216": {
+            "engineClass": "Union",
+            "expression": "UNION",
+            "alias": ""
+        },
+        "217": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "218": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "219": {
+            "engineClass": "Append",
+            "expression": "APPEND",
+            "alias": ""
+        },
+        "220": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "221": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "222": {
+            "engineClass": "Exists",
+            "expression": "",
+            "alias": null
+        },
+        "223": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "224": {
+            "engineClass": "IndexScan",
+            "expression": "dep",
+            "alias": "d"
+        },
+        "225": {
+            "engineClass": "Exists",
+            "expression": "",
+            "alias": null
+        },
+        "226": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "227": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "228": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "229": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 99",
+            "alias": null
+        },
+        "230": {
+            "engineClass": "LogicalAnd",
+            "expression": "AND",
+            "alias": "condition"
+        },
+        "231": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "232": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "233": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "234": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 99",
+            "alias": null
+        },
+        "235": {
+            "engineClass": "LogicalOr",
+            "expression": "OR",
+            "alias": "condition"
+        },
+        "236": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "237": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 10",
+            "alias": null
+        },
+        "238": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "239": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 99",
+            "alias": null
+        },
+        "240": {
+            "engineClass": "LogicalXor",
+            "expression": "XOR",
+            "alias": "condition"
+        },
+        "241": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "242": {
+            "engineClass": "Filter",
+            "expression": "e.salary = 1",
+            "alias": null
+        },
+        "243": {
+            "engineClass": "Filter",
+            "expression": "e.dept = 1",
+            "alias": null
+        },
+        "244": {
+            "engineClass": "IndexScan",
+            "expression": "emp",
+            "alias": "e"
+        },
+        "245": {
+            "engineClass": "NestedLoopJoin",
+            "expression": "e.dept = d.id",
+            "alias": null
+        }
+    }
+}

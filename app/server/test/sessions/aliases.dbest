@@ -1,0 +1,602 @@
+{
+    "version": 3,
+    "history": {
+        "session": {
+            "tables": {
+                "1": {
+                    "@type": "memory",
+                    "name": "emp",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "INT",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "name",
+                            "type": "STRING",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "dept",
+                            "type": "INT",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "tags",
+                            "type": "STRING",
+                            "primaryKey": false,
+                            "nullable": false
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "id": {
+                                "int": 1
+                            },
+                            "name": {
+                                "str": "ana"
+                            },
+                            "dept": {
+                                "int": 10
+                            },
+                            "tags": {
+                                "str": "x;y"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 2
+                            },
+                            "name": {
+                                "str": "bob"
+                            },
+                            "dept": {
+                                "int": 20
+                            },
+                            "tags": {
+                                "str": "z"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 3
+                            },
+                            "name": {
+                                "str": "cid"
+                            },
+                            "dept": {
+                                "int": 10
+                            },
+                            "tags": {
+                                "str": "w"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 4
+                            },
+                            "name": {
+                                "str": "dan"
+                            },
+                            "dept": {
+                                "int": 40
+                            },
+                            "tags": {
+                                "str": "q"
+                            }
+                        }
+                    ]
+                },
+                "2": {
+                    "@type": "memory",
+                    "name": "dep",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "INT",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "city",
+                            "type": "STRING",
+                            "primaryKey": false,
+                            "nullable": false
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "id": {
+                                "int": 10
+                            },
+                            "city": {
+                                "str": "sp"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 20
+                            },
+                            "city": {
+                                "str": "rj"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 30
+                            },
+                            "city": {
+                                "str": "bh"
+                            }
+                        }
+                    ]
+                }
+            },
+            "nodes": {
+                "1": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e"
+                },
+                "2": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e2"
+                },
+                "3": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "e.dept",
+                        "op": "EQ",
+                        "right": {
+                            "int": 10
+                        }
+                    }
+                },
+                "4": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "e2.dept",
+                        "op": "EQ",
+                        "right": {
+                            "int": 40
+                        }
+                    }
+                },
+                "5": {
+                    "@type": "setOp",
+                    "kind": "UNION",
+                    "hashed": true,
+                    "alias": "pessoas"
+                },
+                "6": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "pessoas.dept",
+                        "op": "EQ",
+                        "right": {
+                            "int": 10
+                        }
+                    }
+                },
+                "7": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e3"
+                },
+                "8": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e4"
+                },
+                "9": {
+                    "@type": "setOp",
+                    "kind": "UNION",
+                    "hashed": false,
+                    "alias": ""
+                },
+                "10": {
+                    "@type": "table",
+                    "table": 2,
+                    "alias": "d"
+                },
+                "11": {
+                    "@type": "table",
+                    "table": 2,
+                    "alias": "d2"
+                },
+                "12": {
+                    "@type": "setOp",
+                    "kind": "APPEND",
+                    "hashed": true,
+                    "alias": "todos"
+                },
+                "13": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e5"
+                },
+                "14": {
+                    "@type": "agg",
+                    "alias": "porDept",
+                    "by": "e5.dept",
+                    "aggregates": [
+                        {
+                            "function": "COUNT",
+                            "column": "e5.id"
+                        }
+                    ],
+                    "hashed": true
+                },
+                "15": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "porDept.dept",
+                        "op": "GT",
+                        "right": {
+                            "int": 15
+                        }
+                    }
+                },
+                "16": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e6"
+                },
+                "17": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e7"
+                },
+                "18": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "e6.dept",
+                        "op": "EQ",
+                        "right": {
+                            "int": 10
+                        }
+                    }
+                },
+                "19": {
+                    "@type": "setOp",
+                    "kind": "INTERSECT",
+                    "hashed": true,
+                    "alias": ""
+                },
+                "20": {
+                    "@type": "table",
+                    "table": 2,
+                    "alias": "d3"
+                },
+                "21": {
+                    "@type": "rowNumber",
+                    "alias": "linha",
+                    "column": "n",
+                    "start": 1
+                },
+                "22": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "f1"
+                },
+                "23": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "f2"
+                },
+                "24": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "f1.dept",
+                        "op": "EQ",
+                        "right": {
+                            "int": 10
+                        }
+                    }
+                },
+                "25": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "f2.dept",
+                        "op": "EQ",
+                        "right": {
+                            "int": 40
+                        }
+                    }
+                },
+                "26": {
+                    "@type": "setOp",
+                    "kind": "UNION",
+                    "hashed": true,
+                    "alias": "grupo"
+                },
+                "27": {
+                    "@type": "table",
+                    "table": 2,
+                    "alias": "dd"
+                },
+                "28": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "dd.id",
+                        "op": "EQ",
+                        "right": {
+                            "ref": "grupo.dept"
+                        }
+                    }
+                },
+                "29": {
+                    "@type": "join",
+                    "type": "LEFT_SEMI",
+                    "algorithm": "NESTED_LOOP",
+                    "on": []
+                },
+                "30": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": "e3.dept",
+                        "op": "EQ",
+                        "right": {
+                            "int": 10
+                        }
+                    }
+                }
+            },
+            "edges": [
+                {
+                    "from": 1,
+                    "to": 3,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 2,
+                    "to": 4,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 3,
+                    "to": 5,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 4,
+                    "to": 5,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 5,
+                    "to": 6,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 7,
+                    "to": 9,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 8,
+                    "to": 9,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 10,
+                    "to": 12,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 11,
+                    "to": 12,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 13,
+                    "to": 14,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 14,
+                    "to": 15,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 16,
+                    "to": 18,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 18,
+                    "to": 19,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 17,
+                    "to": 19,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 20,
+                    "to": 21,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 22,
+                    "to": 24,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 23,
+                    "to": 25,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 24,
+                    "to": 26,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 25,
+                    "to": 26,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 27,
+                    "to": 28,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 26,
+                    "to": 29,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 28,
+                    "to": 29,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 9,
+                    "to": 30,
+                    "port": "ONLY"
+                }
+            ],
+            "layout": {
+                "1": {
+                    "x": 60.0,
+                    "y": 60.0
+                },
+                "2": {
+                    "x": 230.0,
+                    "y": 60.0
+                },
+                "3": {
+                    "x": 60.0,
+                    "y": 210.0
+                },
+                "4": {
+                    "x": 230.0,
+                    "y": 210.0
+                },
+                "5": {
+                    "x": 60.0,
+                    "y": 360.0
+                },
+                "6": {
+                    "x": 60.0,
+                    "y": 510.0
+                },
+                "7": {
+                    "x": 440.0,
+                    "y": 60.0
+                },
+                "8": {
+                    "x": 610.0,
+                    "y": 60.0
+                },
+                "9": {
+                    "x": 440.0,
+                    "y": 210.0
+                },
+                "10": {
+                    "x": 820.0,
+                    "y": 60.0
+                },
+                "11": {
+                    "x": 990.0,
+                    "y": 60.0
+                },
+                "12": {
+                    "x": 820.0,
+                    "y": 210.0
+                },
+                "13": {
+                    "x": 1200.0,
+                    "y": 60.0
+                },
+                "14": {
+                    "x": 1200.0,
+                    "y": 210.0
+                },
+                "15": {
+                    "x": 1200.0,
+                    "y": 360.0
+                },
+                "16": {
+                    "x": 1580.0,
+                    "y": 60.0
+                },
+                "17": {
+                    "x": 1750.0,
+                    "y": 60.0
+                },
+                "18": {
+                    "x": 1580.0,
+                    "y": 210.0
+                },
+                "19": {
+                    "x": 1580.0,
+                    "y": 360.0
+                },
+                "20": {
+                    "x": 1960.0,
+                    "y": 60.0
+                },
+                "21": {
+                    "x": 1960.0,
+                    "y": 210.0
+                },
+                "22": {
+                    "x": 2340.0,
+                    "y": 60.0
+                },
+                "23": {
+                    "x": 2510.0,
+                    "y": 60.0
+                },
+                "24": {
+                    "x": 2340.0,
+                    "y": 210.0
+                },
+                "25": {
+                    "x": 2510.0,
+                    "y": 210.0
+                },
+                "26": {
+                    "x": 2340.0,
+                    "y": 360.0
+                },
+                "27": {
+                    "x": 2680.0,
+                    "y": 210.0
+                },
+                "28": {
+                    "x": 2680.0,
+                    "y": 360.0
+                },
+                "29": {
+                    "x": 2510.0,
+                    "y": 510.0
+                },
+                "30": {
+                    "x": 440.0,
+                    "y": 360.0
+                }
+            }
+        },
+        "undoStack": [],
+        "redoStack": []
+    }
+}

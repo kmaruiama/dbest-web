@@ -1,0 +1,616 @@
+{
+    "session": {
+        "tables": {
+            "1": {
+                "@type": "memory",
+                "name": "users",
+                "columns": [
+                    {
+                        "name": "id",
+                        "type": "INT",
+                        "primaryKey": true,
+                        "nullable": false
+                    },
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "visits",
+                        "type": "LONG",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "score",
+                        "type": "FLOAT",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "ratio",
+                        "type": "DOUBLE",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "active",
+                        "type": "BOOLEAN",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "nick",
+                        "type": "STRING",
+                        "primaryKey": false,
+                        "nullable": true
+                    }
+                ],
+                "rows": [
+                    {
+                        "id": {
+                            "int": 1
+                        },
+                        "name": {
+                            "str": "Ana"
+                        },
+                        "visits": {
+                            "long": 10
+                        },
+                        "score": {
+                            "float": 1.5
+                        },
+                        "ratio": {
+                            "double": 0.25
+                        },
+                        "active": {
+                            "bool": true
+                        },
+                        "nick": null
+                    },
+                    {
+                        "id": {
+                            "int": 2
+                        },
+                        "name": {
+                            "str": "Bruno"
+                        },
+                        "visits": {
+                            "long": 3
+                        },
+                        "score": {
+                            "float": 2.5
+                        },
+                        "ratio": {
+                            "double": 0.5
+                        },
+                        "active": {
+                            "bool": false
+                        },
+                        "nick": {
+                            "str": "bru"
+                        }
+                    }
+                ]
+            },
+            "2": {
+                "@type": "csv",
+                "name": "orders",
+                "path": "data/orders.csv",
+                "columns": [
+                    {
+                        "name": "id",
+                        "type": "INT",
+                        "primaryKey": true,
+                        "nullable": false
+                    },
+                    {
+                        "name": "user_id",
+                        "type": "INT",
+                        "primaryKey": false,
+                        "nullable": false
+                    },
+                    {
+                        "name": "total",
+                        "type": "INT",
+                        "primaryKey": false,
+                        "nullable": false
+                    }
+                ],
+                "separator": ";",
+                "delimiter": "'",
+                "headerLine": 2
+            },
+            "3": {
+                "@type": "btree",
+                "name": "archive",
+                "path": "data/archive.btree",
+                "cacheSize": 512
+            }
+        },
+        "nodes": {
+            "1": {
+                "@type": "table",
+                "table": 1,
+                "alias": "u"
+            },
+            "2": {
+                "@type": "table",
+                "table": 2,
+                "alias": "o"
+            },
+            "3": {
+                "@type": "join",
+                "on": [
+                    {
+                        "left": {
+                            "source": "u",
+                            "column": "id"
+                        },
+                        "right": {
+                            "source": "o",
+                            "column": "user_id"
+                        }
+                    }
+                ],
+                "type": "LEFT",
+                "algorithm": "HASH"
+            },
+            "4": {
+                "@type": "filter",
+                "condition": {
+                    "@type": "and",
+                    "conditions": [
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "o",
+                                "name": "total"
+                            },
+                            "op": "GTE",
+                            "right": {
+                                "int": 100
+                            }
+                        },
+                        {
+                            "@type": "or",
+                            "conditions": [
+                                {
+                                    "@type": "cmp",
+                                    "left": {
+                                        "source": "u",
+                                        "name": "active"
+                                    },
+                                    "op": "EQ",
+                                    "right": {
+                                        "bool": true
+                                    }
+                                },
+                                {
+                                    "@type": "isNull",
+                                    "column": {
+                                        "source": "u",
+                                        "name": "nick"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "isNotNull",
+                            "column": {
+                                "source": "u",
+                                "name": "name"
+                            }
+                        },
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "u",
+                                "name": "id"
+                            },
+                            "op": "NEQ",
+                            "right": {
+                                "ref": "o.user_id"
+                            }
+                        },
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "u",
+                                "name": "score"
+                            },
+                            "op": "GT",
+                            "right": {
+                                "float": 1.5
+                            }
+                        },
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "u",
+                                "name": "ratio"
+                            },
+                            "op": "LT",
+                            "right": {
+                                "double": 0.9
+                            }
+                        },
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "u",
+                                "name": "visits"
+                            },
+                            "op": "LTE",
+                            "right": {
+                                "long": 100
+                            }
+                        },
+                        {
+                            "@type": "cmp",
+                            "left": {
+                                "source": "u",
+                                "name": "name"
+                            },
+                            "op": "EQ",
+                            "right": {
+                                "str": "Ana"
+                            }
+                        }
+                    ]
+                }
+            },
+            "5": {
+                "@type": "project",
+                "columns": [
+                    "u.name",
+                    "o.total"
+                ]
+            },
+            "6": {
+                "@type": "sort",
+                "keys": [
+                    {
+                        "column": "u.name",
+                        "ascending": true
+                    },
+                    {
+                        "column": "o.total",
+                        "ascending": true
+                    }
+                ]
+            },
+            "7": {
+                "@type": "distinct",
+                "hashed": false
+            },
+            "8": {
+                "@type": "limit",
+                "count": 20,
+                "offset": 0
+            },
+            "9": {
+                "@type": "alias",
+                "from": "u",
+                "to": "people"
+            },
+            "10": {
+                "@type": "collapse",
+                "alias": "all"
+            },
+            "11": {
+                "@type": "explode",
+                "column": "u.tags",
+                "delimiter": ";"
+            },
+            "12": {
+                "@type": "rowNumber",
+                "alias": "r",
+                "column": "row",
+                "start": 5
+            },
+            "13": {
+                "@type": "agg",
+                "alias": "byUser",
+                "by": {
+                    "source": "o",
+                    "column": "user_id"
+                },
+                "aggregates": [
+                    {
+                        "column": "total",
+                        "function": "SUM"
+                    },
+                    {
+                        "column": "id",
+                        "function": "COUNT"
+                    },
+                    {
+                        "column": "total",
+                        "function": "MAX"
+                    },
+                    {
+                        "column": "total",
+                        "function": "MIN"
+                    },
+                    {
+                        "column": "total",
+                        "function": "AVG"
+                    },
+                    {
+                        "column": "id",
+                        "function": "FIRST"
+                    },
+                    {
+                        "column": "id",
+                        "function": "LAST"
+                    },
+                    {
+                        "column": "id",
+                        "function": "COUNT_ALL"
+                    },
+                    {
+                        "column": "id",
+                        "function": "COUNT_NULL"
+                    }
+                ],
+                "hashed": true
+            },
+            "14": {
+                "@type": "agg",
+                "alias": "overall",
+                "by": null,
+                "aggregates": [
+                    {
+                        "column": "total",
+                        "function": "SUM"
+                    }
+                ],
+                "hashed": true
+            },
+            "15": {
+                "@type": "materialize"
+            },
+            "16": {
+                "@type": "memoize"
+            },
+            "17": {
+                "@type": "hashIndex"
+            },
+            "18": {
+                "@type": "cross"
+            },
+            "19": {
+                "@type": "setOp",
+                "kind": "UNION",
+                "hashed": false
+            },
+            "21": {
+                "@type": "distinct",
+                "hashed": true
+            },
+            "20": {
+                "@type": "setOp",
+                "kind": "APPEND",
+                "hashed": true
+            }
+        },
+        "edges": [
+            {
+                "from": 1,
+                "to": 3,
+                "port": "LEFT"
+            },
+            {
+                "from": 2,
+                "to": 3,
+                "port": "RIGHT"
+            },
+            {
+                "from": 3,
+                "to": 4,
+                "port": "ONLY"
+            },
+            {
+                "from": 5,
+                "to": 21,
+                "port": "ONLY"
+            }
+        ],
+        "layout": {
+            "1": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "2": {
+                "x": 0.0,
+                "y": 120.0
+            },
+            "3": {
+                "x": 160.0,
+                "y": 60.0
+            },
+            "4": {
+                "x": 320.0,
+                "y": 60.0
+            },
+            "5": {
+                "x": 500.0,
+                "y": 61.0
+            },
+            "6": {
+                "x": 0.0,
+                "y": 240.0
+            },
+            "7": {
+                "x": 0.0,
+                "y": 300.0
+            },
+            "8": {
+                "x": 0.0,
+                "y": 360.0
+            },
+            "9": {
+                "x": 0.0,
+                "y": 420.0
+            },
+            "10": {
+                "x": 0.0,
+                "y": 480.0
+            },
+            "11": {
+                "x": 0.0,
+                "y": 540.0
+            },
+            "12": {
+                "x": 0.0,
+                "y": 600.0
+            },
+            "13": {
+                "x": 0.0,
+                "y": 660.0
+            },
+            "14": {
+                "x": 0.0,
+                "y": 720.0
+            },
+            "15": {
+                "x": 0.0,
+                "y": 780.0
+            },
+            "16": {
+                "x": 0.0,
+                "y": 840.0
+            },
+            "17": {
+                "x": 0.0,
+                "y": 900.0
+            },
+            "18": {
+                "x": 0.0,
+                "y": 960.0
+            },
+            "19": {
+                "x": 0.0,
+                "y": 1020.0
+            },
+            "21": {
+                "x": 640.0,
+                "y": 60.0
+            },
+            "20": {
+                "x": 0.0,
+                "y": 1080.0
+            }
+        }
+    },
+    "captions": {
+        "1": {
+            "engineClass": "IndexScan",
+            "expression": "users",
+            "alias": "u"
+        },
+        "2": {
+            "engineClass": "IndexScan",
+            "expression": "orders",
+            "alias": "o"
+        },
+        "3": {
+            "engineClass": "HashLeftJoin",
+            "expression": "u.id = o.user_id",
+            "alias": null
+        },
+        "4": {
+            "engineClass": "Filter",
+            "expression": "o.total ≥ 100 AND (u.active = true OR u.nick IS NULL) AND u.name IS NOT NULL AND u.id ≠ o.user_id AND u.score > 1.5 AND u.ratio < 0.9 AND u.visits ≤ 100 AND u.name = 'Ana'",
+            "alias": null
+        },
+        "5": {
+            "engineClass": "Projection",
+            "expression": "u.name, o.total",
+            "alias": null
+        },
+        "6": {
+            "engineClass": "Sort",
+            "expression": "u.name ASC, o.total ASC",
+            "alias": null
+        },
+        "7": {
+            "engineClass": "DuplicateRemoval",
+            "expression": "",
+            "alias": null
+        },
+        "8": {
+            "engineClass": "Limit",
+            "expression": "20",
+            "alias": null
+        },
+        "9": {
+            "engineClass": "SourceRename",
+            "expression": "u → people",
+            "alias": null
+        },
+        "10": {
+            "engineClass": "SourceRename1",
+            "expression": "",
+            "alias": "all"
+        },
+        "11": {
+            "engineClass": "Explode",
+            "expression": "u.tags",
+            "alias": null
+        },
+        "12": {
+            "engineClass": "AutoIncrement",
+            "expression": "row from 5",
+            "alias": "r"
+        },
+        "13": {
+            "engineClass": "HashAggregation",
+            "expression": "o.user_id: sum(total), count(id), max(total), min(total), avg(total), first(id), last(id), count_all(id), count_null(id)",
+            "alias": "byUser"
+        },
+        "14": {
+            "engineClass": "AllAggregation",
+            "expression": "sum(total)",
+            "alias": "overall"
+        },
+        "15": {
+            "engineClass": "Materialization",
+            "expression": "",
+            "alias": null
+        },
+        "16": {
+            "engineClass": "Memoize",
+            "expression": "",
+            "alias": null
+        },
+        "17": {
+            "engineClass": "HashIndex",
+            "expression": "",
+            "alias": null
+        },
+        "18": {
+            "engineClass": "CrossJoin",
+            "expression": "",
+            "alias": null
+        },
+        "19": {
+            "engineClass": "Union",
+            "expression": "UNION",
+            "alias": ""
+        },
+        "21": {
+            "engineClass": "HashDuplicateRemoval",
+            "expression": "",
+            "alias": null
+        },
+        "20": {
+            "engineClass": "Append",
+            "expression": "APPEND",
+            "alias": ""
+        }
+    }
+}

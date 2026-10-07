@@ -1,0 +1,319 @@
+{
+    "version": 2,
+    "history": {
+        "session": {
+            "tables": {
+                "1": {
+                    "@type": "memory",
+                    "name": "emp",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "INT",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "name",
+                            "type": "STRING",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "dept",
+                            "type": "INT",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "tags",
+                            "type": "STRING",
+                            "primaryKey": false,
+                            "nullable": false
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "id": {
+                                "int": 1
+                            },
+                            "name": {
+                                "str": "ana"
+                            },
+                            "dept": {
+                                "int": 10
+                            },
+                            "tags": {
+                                "str": "x;y"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 2
+                            },
+                            "name": {
+                                "str": "bob"
+                            },
+                            "dept": {
+                                "int": 20
+                            },
+                            "tags": {
+                                "str": "z"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 3
+                            },
+                            "name": {
+                                "str": "cid"
+                            },
+                            "dept": {
+                                "int": 10
+                            },
+                            "tags": {
+                                "str": "w"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 4
+                            },
+                            "name": {
+                                "str": "dan"
+                            },
+                            "dept": {
+                                "int": 40
+                            },
+                            "tags": {
+                                "str": "q"
+                            }
+                        }
+                    ]
+                },
+                "2": {
+                    "@type": "memory",
+                    "name": "dep",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "INT",
+                            "primaryKey": false,
+                            "nullable": false
+                        },
+                        {
+                            "name": "city",
+                            "type": "STRING",
+                            "primaryKey": false,
+                            "nullable": false
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "id": {
+                                "int": 10
+                            },
+                            "city": {
+                                "str": "sp"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 20
+                            },
+                            "city": {
+                                "str": "rj"
+                            }
+                        },
+                        {
+                            "id": {
+                                "int": 30
+                            },
+                            "city": {
+                                "str": "bh"
+                            }
+                        }
+                    ]
+                }
+            },
+            "nodes": {
+                "1": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e"
+                },
+                "2": {
+                    "@type": "table",
+                    "table": 2,
+                    "alias": "d"
+                },
+                "3": {
+                    "@type": "join",
+                    "on": [],
+                    "type": "INNER",
+                    "algorithm": "HASH"
+                },
+                "4": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e"
+                },
+                "5": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e2"
+                },
+                "6": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": {
+                            "source": "e",
+                            "name": "dept"
+                        },
+                        "op": "EQ",
+                        "right": {
+                            "int": 10
+                        }
+                    }
+                },
+                "7": {
+                    "@type": "filter",
+                    "condition": {
+                        "@type": "cmp",
+                        "left": {
+                            "source": "e2",
+                            "name": "dept"
+                        },
+                        "op": "EQ",
+                        "right": {
+                            "int": 40
+                        }
+                    }
+                },
+                "8": {
+                    "@type": "setOp",
+                    "kind": "UNION",
+                    "hashed": true
+                },
+                "9": {
+                    "@type": "table",
+                    "table": 1,
+                    "alias": "e"
+                },
+                "10": {
+                    "@type": "table",
+                    "table": 2,
+                    "alias": "d"
+                },
+                "11": {
+                    "@type": "join",
+                    "on": [
+                        {
+                            "left": {
+                                "source": "e",
+                                "column": "dept"
+                            },
+                            "right": {
+                                "source": "d",
+                                "column": "id"
+                            }
+                        }
+                    ],
+                    "type": "INNER",
+                    "algorithm": "NESTED_LOOP"
+                }
+            },
+            "edges": [
+                {
+                    "from": 1,
+                    "to": 3,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 2,
+                    "to": 3,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 4,
+                    "to": 6,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 5,
+                    "to": 7,
+                    "port": "ONLY"
+                },
+                {
+                    "from": 6,
+                    "to": 8,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 7,
+                    "to": 8,
+                    "port": "RIGHT"
+                },
+                {
+                    "from": 9,
+                    "to": 11,
+                    "port": "LEFT"
+                },
+                {
+                    "from": 10,
+                    "to": 11,
+                    "port": "RIGHT"
+                }
+            ],
+            "layout": {
+                "1": {
+                    "x": 60.0,
+                    "y": 60.0
+                },
+                "2": {
+                    "x": 230.0,
+                    "y": 60.0
+                },
+                "3": {
+                    "x": 60.0,
+                    "y": 210.0
+                },
+                "4": {
+                    "x": 440.0,
+                    "y": 60.0
+                },
+                "5": {
+                    "x": 610.0,
+                    "y": 60.0
+                },
+                "6": {
+                    "x": 440.0,
+                    "y": 210.0
+                },
+                "7": {
+                    "x": 610.0,
+                    "y": 210.0
+                },
+                "8": {
+                    "x": 440.0,
+                    "y": 360.0
+                },
+                "9": {
+                    "x": 820.0,
+                    "y": 60.0
+                },
+                "10": {
+                    "x": 990.0,
+                    "y": 60.0
+                },
+                "11": {
+                    "x": 820.0,
+                    "y": 210.0
+                }
+            }
+        },
+        "undoStack": [],
+        "redoStack": []
+    }
+}

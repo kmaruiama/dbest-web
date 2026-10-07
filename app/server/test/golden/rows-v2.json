@@ -1,0 +1,1499 @@
+{
+    "2": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ]
+        ]
+    },
+    "4": {
+        "error": "EngineFailure: NullPointerException"
+    },
+    "6": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ]
+        ]
+    },
+    "8": {
+        "columns": [
+            "e.name:STRING:false"
+        ],
+        "rows": [
+            [
+                "ana"
+            ],
+            [
+                "bob"
+            ],
+            [
+                "cid"
+            ],
+            [
+                "dan"
+            ]
+        ]
+    },
+    "10": {
+        "columns": [
+            "P.id:INTEGER:false",
+            "P.name:STRING:false",
+            "P.dept:INTEGER:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10
+            ],
+            [
+                2,
+                "bob",
+                20
+            ],
+            [
+                3,
+                "cid",
+                10
+            ],
+            [
+                4,
+                "dan",
+                40
+            ]
+        ]
+    },
+    "12": {
+        "columns": [
+            "x.id:INTEGER:false",
+            "x.name:STRING:false",
+            "x.dept:INTEGER:false",
+            "x.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "14": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "16": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ]
+        ]
+    },
+    "18": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ]
+        ]
+    },
+    "22": {
+        "columns": [
+            "e.dept:INTEGER:false"
+        ],
+        "rows": [
+            [
+                10
+            ],
+            [
+                20
+            ],
+            [
+                40
+            ]
+        ]
+    },
+    "25": {
+        "columns": [
+            "e.dept:INTEGER:false"
+        ],
+        "rows": [
+            [
+                40
+            ],
+            [
+                20
+            ],
+            [
+                10
+            ]
+        ]
+    },
+    "27": {
+        "columns": [
+            "g.dept:INTEGER:false",
+            "g.COUNT_id:INTEGER:false",
+            "g.SUM_id:INTEGER:false"
+        ],
+        "rows": [
+            [
+                20,
+                1,
+                2
+            ],
+            [
+                40,
+                1,
+                4
+            ],
+            [
+                10,
+                2,
+                4
+            ]
+        ]
+    },
+    "30": {
+        "columns": [
+            "g.dept:INTEGER:false",
+            "g.MAX_id:INTEGER:false"
+        ],
+        "rows": [
+            [
+                10,
+                3
+            ],
+            [
+                20,
+                2
+            ],
+            [
+                40,
+                4
+            ]
+        ]
+    },
+    "32": {
+        "columns": [
+            "g.MAX_id:INTEGER:false",
+            "g.AVG_id:DOUBLE:false"
+        ],
+        "rows": [
+            [
+                4,
+                2.0
+            ]
+        ]
+    },
+    "36": {
+        "columns": [
+            "tudo.id:INTEGER:false",
+            "tudo.name:STRING:false",
+            "tudo.dept:INTEGER:false",
+            "tudo.tags:STRING:false",
+            "tudo.id:INTEGER:false",
+            "tudo.city:STRING:false"
+        ],
+        "rows": [
+            [
+                10,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                20,
+                "ana",
+                10,
+                "x;y",
+                20,
+                "rj"
+            ],
+            [
+                30,
+                "ana",
+                10,
+                "x;y",
+                30,
+                "bh"
+            ],
+            [
+                10,
+                "bob",
+                20,
+                "z",
+                10,
+                "sp"
+            ],
+            [
+                20,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ],
+            [
+                30,
+                "bob",
+                20,
+                "z",
+                30,
+                "bh"
+            ],
+            [
+                10,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                20,
+                "cid",
+                10,
+                "w",
+                20,
+                "rj"
+            ],
+            [
+                30,
+                "cid",
+                10,
+                "w",
+                30,
+                "bh"
+            ],
+            [
+                10,
+                "dan",
+                40,
+                "q",
+                10,
+                "sp"
+            ],
+            [
+                20,
+                "dan",
+                40,
+                "q",
+                20,
+                "rj"
+            ],
+            [
+                30,
+                "dan",
+                40,
+                "q",
+                30,
+                "bh"
+            ]
+        ]
+    },
+    "38": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x"
+            ],
+            [
+                1,
+                "ana",
+                10,
+                "y"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "40": {
+        "columns": [
+            "r.n:INTEGER:false",
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                5,
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                6,
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                7,
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                8,
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "42": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "44": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "46": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "49": {
+        "columns": [
+            "k.id:INTEGER:true",
+            "k.name:STRING:false",
+            "k.dept:INTEGER:false",
+            "k.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ]
+        ]
+    },
+    "54": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ]
+        ]
+    },
+    "59": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ]
+        ]
+    },
+    "64": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ]
+        ]
+    },
+    "69": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q",
+                null,
+                null
+            ]
+        ]
+    },
+    "74": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q",
+                null,
+                null
+            ]
+        ]
+    },
+    "79": {
+        "error": "EngineFailure: Index 2 out of bounds for length 2"
+    },
+    "84": {
+        "columns": [
+            "d.id:INTEGER:false",
+            "d.city:STRING:false",
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                10,
+                "sp",
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                10,
+                "sp",
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                20,
+                "rj",
+                2,
+                "bob",
+                20,
+                "z"
+            ],
+            [
+                30,
+                "bh",
+                null,
+                null,
+                null,
+                null
+            ]
+        ]
+    },
+    "89": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ],
+            [
+                null,
+                null,
+                null,
+                null,
+                30,
+                "bh"
+            ]
+        ]
+    },
+    "94": {
+        "error": "EngineFailure: Index 2 out of bounds for length 2"
+    },
+    "99": {
+        "error": "PlanError: join nao implementado"
+    },
+    "104": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w",
+                10,
+                "sp"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z",
+                20,
+                "rj"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q",
+                null,
+                null
+            ],
+            [
+                null,
+                null,
+                null,
+                null,
+                30,
+                "bh"
+            ]
+        ]
+    },
+    "109": {
+        "error": "EngineFailure: Index 2 out of bounds for length 2"
+    },
+    "114": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ]
+        ]
+    },
+    "119": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ]
+        ]
+    },
+    "124": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                2,
+                "bob",
+                20,
+                "z"
+            ]
+        ]
+    },
+    "129": {
+        "error": "PlanError: join nao implementado"
+    },
+    "134": {
+        "columns": [
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                10,
+                "sp"
+            ],
+            [
+                20,
+                "rj"
+            ]
+        ]
+    },
+    "139": {
+        "columns": [
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                10,
+                "sp"
+            ],
+            [
+                20,
+                "rj"
+            ]
+        ]
+    },
+    "144": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "149": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "154": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ]
+        ]
+    },
+    "159": {
+        "error": "PlanError: join nao implementado"
+    },
+    "164": {
+        "columns": [
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                30,
+                "bh"
+            ]
+        ]
+    },
+    "169": {
+        "columns": [
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                30,
+                "bh"
+            ]
+        ]
+    },
+    "174": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "179": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "184": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ]
+        ]
+    },
+    "189": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ]
+        ]
+    },
+    "194": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ]
+        ]
+    },
+    "199": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ]
+        ]
+    },
+    "204": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "209": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                3,
+                "cid",
+                10,
+                "w"
+            ],
+            [
+                4,
+                "dan",
+                40,
+                "q"
+            ]
+        ]
+    },
+    "216": {
+        "error": "EngineFailure: Index 4 out of bounds for length 4"
+    },
+    "219": {
+        "error": "PlanError: os dois lados de Append precisam ter o mesmo numero de colunas (esquerda tem 4, direita tem 2)"
+    },
+    "222": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                null,
+                null
+            ]
+        ]
+    },
+    "225": {
+        "columns": [
+            "e.id:INTEGER:false",
+            "e.name:STRING:false",
+            "e.dept:INTEGER:false",
+            "e.tags:STRING:false",
+            "d.id:INTEGER:false",
+            "d.city:STRING:false"
+        ],
+        "rows": [
+            [
+                1,
+                "ana",
+                10,
+                "x;y",
+                10,
+                "sp"
+            ]
+        ]
+    },
+    "230": {
+        "columns": [
+            "condition.EVAL:BOOLEAN:false"
+        ],
+        "rows": [
+            [
+                false
+            ]
+        ]
+    },
+    "235": {
+        "columns": [
+            "condition.EVAL:BOOLEAN:false"
+        ],
+        "rows": [
+            [
+                true
+            ]
+        ]
+    },
+    "240": {
+        "columns": [
+            "condition.EVAL:BOOLEAN:false"
+        ],
+        "rows": [
+            [
+                false
+            ]
+        ]
+    },
+    "242": {
+        "error": "PlanError: Error in operation Filter (e.salary=1).\nColumn salary not found."
+    },
+    "243": {
+        "error": "PlanError: O node #243 esta sem sua entrada ONLY"
+    },
+    "245": {
+        "error": "PlanError: O node #245 esta sem sua entrada RIGHT"
+    },
+    "problems": [
+        {
+            "node": 243,
+            "message": "falta a entrada ONLY"
+        },
+        {
+            "node": 245,
+            "message": "falta a entrada RIGHT"
+        },
+        {
+            "node": 172,
+            "message": "o alias 'e' ja nomeia o node #170 desta arvore"
+        },
+        {
+            "node": 177,
+            "message": "o alias 'e' ja nomeia o node #175 desta arvore"
+        },
+        {
+            "node": 182,
+            "message": "o alias 'e' ja nomeia o node #180 desta arvore"
+        },
+        {
+            "node": 187,
+            "message": "o alias 'e' ja nomeia o node #185 desta arvore"
+        },
+        {
+            "node": 192,
+            "message": "o alias 'e' ja nomeia o node #190 desta arvore"
+        },
+        {
+            "node": 197,
+            "message": "o alias 'e' ja nomeia o node #195 desta arvore"
+        },
+        {
+            "node": 202,
+            "message": "o alias 'e' ja nomeia o node #200 desta arvore"
+        },
+        {
+            "node": 207,
+            "message": "o alias 'e' ja nomeia o node #205 desta arvore"
+        },
+        {
+            "node": 213,
+            "message": "o alias 'e' ja nomeia o node #210 desta arvore"
+        },
+        {
+            "node": 214,
+            "message": "o alias 'd' ja nomeia o node #211 desta arvore"
+        },
+        {
+            "node": 228,
+            "message": "o alias 'e' ja nomeia o node #226 desta arvore"
+        },
+        {
+            "node": 233,
+            "message": "o alias 'e' ja nomeia o node #231 desta arvore"
+        },
+        {
+            "node": 238,
+            "message": "o alias 'e' ja nomeia o node #236 desta arvore"
+        },
+        {
+            "node": 99,
+            "message": "join nao implementado"
+        },
+        {
+            "node": 129,
+            "message": "join nao implementado"
+        },
+        {
+            "node": 159,
+            "message": "join nao implementado"
+        },
+        {
+            "node": 219,
+            "message": "os dois lados de Append precisam ter o mesmo numero de colunas (esquerda tem 4, direita tem 2)"
+        },
+        {
+            "node": 242,
+            "message": "Error in operation Filter (e.salary=1).\nColumn salary not found."
+        }
+    ]
+}

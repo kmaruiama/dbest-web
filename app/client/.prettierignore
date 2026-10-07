@@ -1,0 +1,8 @@
+dist
+node_modules
+coverage
+test-results
+playwright-report
+blob-report
+*.min.js
+package-lock.json
