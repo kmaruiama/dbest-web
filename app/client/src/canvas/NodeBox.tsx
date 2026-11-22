@@ -35,7 +35,7 @@ export function NodeBox({ id, data: box, selected }: NodeProps<BoxNode>) {
 
       {selected && (
         <div
-          className="node-tools"
+          className="node-tools nodrag"
           data-testid="node-tools"
           onClick={(event) => event.stopPropagation()}
         >
