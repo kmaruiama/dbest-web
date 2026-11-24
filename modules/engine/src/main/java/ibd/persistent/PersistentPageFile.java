@@ -43,7 +43,7 @@ public class PersistentPageFile<P extends Page> extends AbstractStoringPageFile 
     @Override
     public Page readPage(int pageID) {
         try {
-            engine.info.Parameters.BLOCKS_LOADED++;
+            engine.info.Parameters.BLOCKS_LOADED.increment();
             long offset = ((long) (header.getReservedPages() + pageID)) * (long) pageSize;
             byte[] buffer = new byte[pageSize];
             int read = file.read(ByteBuffer.wrap(buffer), offset);

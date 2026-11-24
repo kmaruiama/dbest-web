@@ -61,11 +61,12 @@ class ExecutionTest {
         val workspace = scratch()
         try {
             val query = scan(50)
-            QueryStats.NEXT_CALLS = 0
+            QueryStats.NEXT_CALLS.reset()
             assertEquals((1..10).toList(), ids(workspace.engineState.page(query, 0, 10)))
-            val afterFirst = QueryStats.NEXT_CALLS
+            val afterFirst = QueryStats.NEXT_CALLS.sum()
             assertEquals((11..20).toList(), ids(workspace.engineState.page(query, 10, 10)))
-            assertTrue(QueryStats.NEXT_CALLS - afterFirst < 20, "the second page should not rescan")
+            assertTrue(
+                QueryStats.NEXT_CALLS.sum() - afterFirst < 20, "the second page should not rescan")
             assertEquals((1..10).toList(), ids(workspace.engineState.page(query, 0, 10)))
         } finally {
             workspace.engineState.close()
@@ -261,11 +262,12 @@ class ExecutionTest {
                 harness.command(sid, AddTable(TableId(1), numbers(25_000)))
                 harness.command(
                     sid, AddNode(NodeId(1), TableNode(TableId(1), "n"), Position(0.0, 0.0)))
-                QueryStats.NEXT_CALLS = 0
+                QueryStats.NEXT_CALLS.reset()
 
                 val response = harness.send(Method.GET, "/sessions/$sid/nodes/1/rows")
                 assertEquals(1, response.body.stream.read(ByteArray(1)))
-                assertTrue(QueryStats.NEXT_CALLS < 25_000, "one read should pull only one chunk")
+                assertTrue(
+                    QueryStats.NEXT_CALLS.sum() < 25_000, "one read should pull only one chunk")
                 assertEquals(
                     Status.CONFLICT,
                     harness.send(Method.GET, "/sessions/$sid/nodes/1/rows?offset=0&limit=1").status)

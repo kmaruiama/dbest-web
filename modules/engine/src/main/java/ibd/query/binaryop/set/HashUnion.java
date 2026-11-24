@@ -133,7 +133,7 @@ public class HashUnion extends Set implements SingleSource{
                         Tuple leftTuple = leftTuples.next();
                         String key = getKey(leftTuple);
                         tuples.put(key, leftTuple);
-                        QueryStats.MEMORY_USED += tupleSize;
+                        QueryStats.MEMORY_USED.add(tupleSize);
 
                         Tuple returnTp = new Tuple();
                         returnTp.rows = new LinkedDataRow[1];

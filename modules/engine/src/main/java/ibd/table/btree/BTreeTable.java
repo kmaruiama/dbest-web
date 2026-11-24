@@ -83,6 +83,10 @@ public class BTreeTable extends Table {
 
     }
 
+    public BPlusTreeFileTable getTree() {
+        return tree;
+    }
+
     @Override
     public String getName() {
         return name;

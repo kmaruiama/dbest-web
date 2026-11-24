@@ -297,7 +297,7 @@ public boolean exists(List<Tuple> processedTuples, boolean withFilterDelegation)
             for (SingleColumnLookupFilter filter_ : fastFilters) {
                 fastLookupRow.setValue(filter_.getColumnDescriptor().getColumnLocation().colIndex, filter_.getSecondElement().getValue(null));
             }
-            ibd.query.QueryStats.PK_SEARCH++;
+            ibd.query.QueryStats.PK_SEARCH.increment();
             return table.contains(fastLookupRow);
         } else {
             if (slowLookupFilter instanceof NoRowLookupFilter) {
@@ -342,7 +342,7 @@ public Map<String, List<String>> getContentInfo() {
         try {
 
             if (canLookup) {
-                ibd.query.QueryStats.PK_SEARCH++;
+                ibd.query.QueryStats.PK_SEARCH.increment();
                 for (SingleColumnLookupFilter filter : fastFilters) {
                     fastLookupRow.setValue(filter.getColumnDescriptor().getColumnLocation().colIndex, filter.getSecondElement().getValue(null));
                 }

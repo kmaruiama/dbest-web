@@ -87,24 +87,20 @@ private fun measureOpened(query: Query, tables: OpenTables, limit: Int?): Measur
 }
 
 private fun zeroCounters() {
-    QueryStats.NEXT_CALLS = 0
-    QueryStats.COMPARE_FILTER = 0
-    QueryStats.PK_SEARCH = 0
-    QueryStats.SORT_TUPLES = 0
-    QueryStats.MEMORY_USED = 0
-    Parameters.RECORDS_READ = 0
-    Parameters.BLOCKS_ACCESSED = 0
-    Parameters.BLOCKS_LOADED = 0
+    QueryStats.clear()
+    Parameters.RECORDS_READ.reset()
+    Parameters.BLOCKS_ACCESSED.reset()
+    Parameters.BLOCKS_LOADED.reset()
 }
 
 private fun counters(): List<Metric> =
     listOf(
-        Metric("nextCalls", QueryStats.NEXT_CALLS),
-        Metric("comparisons", QueryStats.COMPARE_FILTER),
-        Metric("pkSearches", QueryStats.PK_SEARCH),
-        Metric("sortedTuples", QueryStats.SORT_TUPLES),
-        Metric("memoryBytes", QueryStats.MEMORY_USED),
-        Metric("recordsRead", Parameters.RECORDS_READ),
-        Metric("blocksAccessed", Parameters.BLOCKS_ACCESSED),
-        Metric("blocksLoaded", Parameters.BLOCKS_LOADED),
+        Metric("nextCalls", QueryStats.NEXT_CALLS.sum()),
+        Metric("comparisons", QueryStats.COMPARE_FILTER.sum()),
+        Metric("pkSearches", QueryStats.PK_SEARCH.sum()),
+        Metric("sortedTuples", QueryStats.SORT_TUPLES.sum()),
+        Metric("memoryBytes", QueryStats.MEMORY_USED.sum()),
+        Metric("recordsRead", Parameters.RECORDS_READ.sum()),
+        Metric("blocksAccessed", Parameters.BLOCKS_ACCESSED.sum()),
+        Metric("blocksLoaded", Parameters.BLOCKS_LOADED.sum()),
     )

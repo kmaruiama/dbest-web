@@ -54,7 +54,7 @@ public abstract class HashJoin extends Join {
 
             } catch (Exception ex) {
             }
-            QueryStats.MEMORY_USED += memoryUsed;
+            QueryStats.MEMORY_USED.add(memoryUsed);
         }
 
     }

@@ -78,7 +78,7 @@ public class HashIndex extends UnaryOperation {
                     constantTuples = null;
                 }
                 
-                QueryStats.MEMORY_USED = Math.max(0, QueryStats.MEMORY_USED - memoryFreed);
+                QueryStats.MEMORY_USED.add(-Math.min(memoryFreed, QueryStats.MEMORY_USED.sum()));
                 
                 System.gc();
                 
@@ -376,7 +376,7 @@ public class HashIndex extends UnaryOperation {
                 }
                 
                 if (tuples != null && !Thread.currentThread().isInterrupted()) {
-                    QueryStats.MEMORY_USED += memoryUsed;
+                    QueryStats.MEMORY_USED.add(memoryUsed);
                 }
             }
         }

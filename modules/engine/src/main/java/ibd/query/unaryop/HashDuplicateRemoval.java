@@ -70,7 +70,7 @@ public class HashDuplicateRemoval extends UnaryOperation {
             
             if (allTuplesIterator==null){
                 allTuplesIterator = allTuples.values().iterator();
-                QueryStats.MEMORY_USED += allTuples.size()*tupleSize;
+                QueryStats.MEMORY_USED.add(allTuples.size()*tupleSize);
             }
             
             while(allTuplesIterator.hasNext()){
