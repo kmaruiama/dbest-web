@@ -16,7 +16,6 @@ test("two marked nodes from different trees are measured side by side", async ({
   await compare.click();
   const comparator = page.getByTestId("comparator");
   const tuples = comparator.getByTestId("metric.tuples").locator("td");
-  await expect(comparator.getByTestId("comparator-not-measured")).toBeVisible();
   await expect(tuples).toHaveCount(0);
   await comparator.getByTestId("comparator-measure").click();
   await expect(tuples.first()).toHaveText("4");
@@ -102,7 +101,6 @@ test("the tuple count must be a positive whole number", async ({
   const comparator = page.getByTestId("comparator");
   const limit = comparator.getByTestId("comparator-limit");
   const measure = comparator.getByTestId("comparator-measure");
-  await expect(comparator.getByTestId("comparator-not-measured")).toBeVisible();
   for (const bad of ["0", "-2", "", "1.5"]) {
     await limit.fill(bad);
     await expect(measure, `"${bad}" was accepted`).toBeDisabled();

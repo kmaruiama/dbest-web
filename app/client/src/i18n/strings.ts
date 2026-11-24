@@ -193,19 +193,8 @@ export const strings: Record<string, Record<Lang, string>> = {
   },
   clearMarks: { "en-US": "clear marks", "pt-BR": "limpar marcas" },
   comparator: { "en-US": "comparator", "pt-BR": "comparador" },
-  comparatorNote: {
-    "en-US":
-      "Each side runs alone, from zeroed counters, on its own freshly opened tables. Records are counted only for CSV and B-tree tables, blocks only for B-tree tables.",
-    "pt-BR":
-      "Cada lado roda sozinho, com contadores zerados, em tabelas recém-abertas só para ele. Registros só são contados em tabelas CSV e B-tree; blocos, só em B-tree.",
-  },
   tuplesToRead: { "en-US": "tuples to read", "pt-BR": "tuplas a ler" },
   measure: { "en-US": "measure", "pt-BR": "medir" },
-  notMeasured: {
-    "en-US":
-      "Nothing measured yet: choose how many tuples to read, then measure.",
-    "pt-BR": "Nada medido ainda: escolha quantas tuplas ler e clique em medir.",
-  },
   "metric.tuples": { "en-US": "tuples read", "pt-BR": "tuplas lidas" },
   "metric.elapsed": { "en-US": "time", "pt-BR": "tempo" },
   "metric.nextCalls": {

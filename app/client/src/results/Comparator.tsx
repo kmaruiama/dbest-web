@@ -84,11 +84,6 @@ export function Comparator({ sid, sides, onClose }: Props) {
       </div>
 
       <div className="results-body">
-        {state.kind === "notMeasured" && (
-          <div className="centred" data-testid="comparator-not-measured">
-            <p className="faded">{translate("notMeasured")}</p>
-          </div>
-        )}
         {state.kind === "loading" && <Loading />}
         {state.kind === "failed" && (
           <div className="centred">
@@ -127,10 +122,6 @@ export function Comparator({ sid, sides, onClose }: Props) {
           </table>
         )}
       </div>
-
-      <footer>
-        <span className="faded">{translate("comparatorNote")}</span>
-      </footer>
     </Dialog>
   );
 }

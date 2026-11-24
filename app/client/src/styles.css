@@ -917,8 +917,7 @@ input.bad {
 
 .dialog.results header,
 .dialog.results footer,
-.dialog.comparator header,
-.dialog.comparator footer {
+.dialog.comparator header {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -930,8 +929,7 @@ input.bad {
   border-bottom: 1px solid var(--border);
 }
 
-.dialog.results footer,
-.dialog.comparator footer {
+.dialog.results footer {
   border-top: 1px solid var(--border);
   justify-content: center;
 }
@@ -999,11 +997,6 @@ table.tuples thead th {
   max-height: 82vh;
   padding: 0;
   gap: 0;
-}
-
-.dialog.comparator footer {
-  justify-content: flex-start;
-  font-size: 11px;
 }
 
 .comparator-budget {
