@@ -27,6 +27,8 @@ class CatalogTest {
                     true,
                     listOf(FieldSpec("columns", Widget.LIST, item = Widget.COLUMN)),
                 ),
+            "table" to OperatorType(Arity.SOURCE, true, listOf(FieldSpec("parallel", Widget.FLAG))),
+            "gather" to OperatorType(Arity.UNARY, true, listOf(FieldSpec("threads", Widget.INT))),
         )
 
     @Test
@@ -37,7 +39,7 @@ class CatalogTest {
         val golden =
             wire.decodeFromJsonElement(
                 Catalog.serializer(), migrate(2, wire.parseToJsonElement(text)))
-        assertEquals(golden.categories, CATALOG.categories)
+        assertEquals(golden.categories + OperatorCategory.PARALLEL, CATALOG.categories)
         assertEquals(golden.operators, CATALOG.operators.filter({ chip -> chip.type !in added }))
         for ((kind, type) in golden.types) {
             assertEquals(type, CATALOG.types.get(kind), kind)

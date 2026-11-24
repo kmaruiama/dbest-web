@@ -1,3 +1,6 @@
+import { join } from "node:path";
+import { BACKEND_DIR } from "./env";
+
 export type Literal =
   | {
       int: number;
@@ -13,12 +16,14 @@ export type Column = {
   nullable: boolean;
 };
 
-export type TableSpec = {
-  "@type": "memory";
-  name: string;
-  columns: Column[];
-  rows: Record<string, Literal>[];
-};
+export type TableSpec =
+  | {
+      "@type": "memory";
+      name: string;
+      columns: Column[];
+      rows: Record<string, Literal>[];
+    }
+  | { "@type": "btree"; name: string; path: string };
 
 export const int = (value: number): Literal => ({ int: value });
 
@@ -53,7 +58,7 @@ const DEP_ROWS = [
   { id: int(30), city: str("bh") },
 ];
 
-export type FixtureName = "emp" | "dep" | "empKey" | "depKey";
+export type FixtureName = "emp" | "dep" | "empKey" | "depKey" | "empTree";
 
 export const FIXTURES: Record<FixtureName, TableSpec> = {
   emp: {
@@ -85,6 +90,11 @@ export const FIXTURES: Record<FixtureName, TableSpec> = {
     columns: [column("id", "INT", true), column("city", "STRING")],
     rows: DEP_ROWS,
   },
+  empTree: {
+    "@type": "btree",
+    name: "emptree",
+    path: join(BACKEND_DIR, "test", "data", "emptree.dat"),
+  },
 };
 
 export const TABLE_IDS: Record<FixtureName, number> = {
@@ -92,6 +102,7 @@ export const TABLE_IDS: Record<FixtureName, number> = {
   dep: 2,
   empKey: 3,
   depKey: 4,
+  empTree: 5,
 };
 
 export const TABLE_NAMES: Record<FixtureName, string> = {
@@ -99,4 +110,5 @@ export const TABLE_NAMES: Record<FixtureName, string> = {
   dep: "dep",
   empKey: "empkey",
   depKey: "depkey",
+  empTree: "emptree",
 };

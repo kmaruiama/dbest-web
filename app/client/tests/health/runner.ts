@@ -100,7 +100,13 @@ export async function runCase(
     if (at === undefined)
       throw new Error(`no layout spot for step "${step.as}"`);
     if ("table" in step) {
-      ids.set(step.as, await canvas.addTable(step.table, step.alias, at));
+      const id = await canvas.addTable(step.table, step.alias, at);
+      ids.set(step.as, id);
+      if (step.parallel === true) {
+        await canvas.openEdit(id);
+        await form.fill("table", [{ at: "parallel", flag: true }]);
+        await form.save();
+      }
       continue;
     }
     const id = await canvas.dropChip(step.chip, at);

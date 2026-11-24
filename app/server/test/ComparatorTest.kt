@@ -1,12 +1,6 @@
 package dbest
 
-import ibd.table.btree.BTreeTable
-import ibd.table.prototype.BasicDataRow
-import ibd.table.prototype.Prototype
-import ibd.table.prototype.column.IntegerColumn
-import ibd.table.prototype.metadata.Metadata
 import java.nio.file.Files
-import java.nio.file.Path
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -52,28 +46,11 @@ class ComparatorTest {
         assertEquals(Pair(3, true), Pair(all.tuples, all.exhausted))
     }
 
-    private fun btree(dir: Path, count: Int): BTreeSpec {
-        val prototype = Prototype()
-        prototype.addColumn(IntegerColumn("id", 4, Metadata.PRIMARY_KEY))
-        prototype.addColumn(IntegerColumn("v", 4, Metadata.NONE))
-        val table = BTreeTable(null, dir.toString(), "nums.dat", 1_000)
-        table.create(prototype, 4096)
-        for (id in 1..count) {
-            val row = BasicDataRow()
-            row.setInt("id", id)
-            row.setInt("v", id % 7)
-            table.addRecord(row, true)
-        }
-        table.flushDB()
-        table.close()
-        return BTreeSpec("nums", dir.resolve("nums.dat").toString())
-    }
-
     @Test
     fun `a side reads its B-tree from a cold cache, so measuring it again loads the same blocks`() {
         val dir = Files.createTempDirectory("dbest-btree")
         try {
-            val scan = Query(TableNode(TableId(1), "n"), emptyList(), btree(dir, 3_000))
+            val scan = Query(TableNode(TableId(1), "n"), emptyList(), numbers(dir, 3_000))
             val first = counted(measure(scan, null))
             assertEquals(3_000L, first["tuples"])
             assertTrue((first["blocksLoaded"] ?: 0) > 0, "$first")

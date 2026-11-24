@@ -44,7 +44,13 @@ class CompilerTest {
                 mapOf("id" to 30, "city" to "bh")),
         )
 
-    private val tables = mapOf("emp" to 1, "dep" to 2, "empKey" to 3, "depKey" to 4)
+    private val tables = mapOf("emp" to 1, "dep" to 2, "empKey" to 3, "depKey" to 4, "nums" to 5)
+
+    private val nums: BTreeSpec by lazy {
+        val dir = Files.createTempDirectory("dbest-nums")
+        dir.toFile().deleteOnExit()
+        numbers(dir, 12)
+    }
 
     private inner class Build {
         val commands =
@@ -54,6 +60,7 @@ class CompilerTest {
                     AddTable(TableId(2), dep("dep", false)),
                     AddTable(TableId(3), emp("empkey", true)),
                     AddTable(TableId(4), dep("depkey", true)),
+                    AddTable(TableId(5), nums),
                 ))
         private var next = 0
 
@@ -137,6 +144,20 @@ class CompilerTest {
     private fun cases(): List<Case> {
         val cases =
             arrayListOf(
+                Case(
+                    "gather reads each part of a parallel B-tree on its own thread",
+                    "gather",
+                    """{"threads": 3}""",
+                    { b, n ->
+                        b.add(
+                            n,
+                            b.filter(
+                                b.add(TableNode(TableId(5), "n", parallel = true)),
+                                cmp("n.v", "EQ", 3)))
+                    },
+                    listOf("n.id"),
+                    listOf("3", "10"),
+                    ordered = true),
                 Case(
                     "filter keeps the rows that satisfy the condition",
                     "filter",

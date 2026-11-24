@@ -259,6 +259,7 @@ export const strings: Record<string, Record<Lang, string>> = {
   },
   "category.Sets": { "en-US": "Sets", "pt-BR": "Conjuntos" },
   "category.Boolean": { "en-US": "Boolean", "pt-BR": "Booleanos" },
+  "category.Parallel": { "en-US": "Parallel", "pt-BR": "Paralelismo" },
   "op.aggregation": { "en-US": "Aggregation", "pt-BR": "Agregação" },
   "opDesc.aggregation": {
     "en-US": "Groups tuples and computes aggregate functions (sum, count, …).",
@@ -592,6 +593,19 @@ export const strings: Record<string, Record<Lang, string>> = {
       "Join keeping all right tuples; unmatched left columns become null.",
     "pt-BR":
       "Junção que mantém todas as tuplas da direita; colunas da esquerda sem correspondência ficam nulas.",
+  },
+  "op.gather": { "en-US": "Gather", "pt-BR": "Gather" },
+  "opDesc.gather": {
+    "en-US":
+      "Runs its input on several threads, each reading one part of the parallel table, and returns the parts in order.",
+    "pt-BR":
+      "Executa a entrada em várias threads, cada uma lendo uma parte da tabela paralela, e devolve as partes em ordem.",
+  },
+  "field.gather.threads": { "en-US": "Threads", "pt-BR": "Threads" },
+  "op.table": { "en-US": "Table", "pt-BR": "Tabela" },
+  "field.table.parallel": {
+    "en-US": "Parallel scan (split by a Gather)",
+    "pt-BR": "Leitura paralela (dividida por um Gather)",
   },
   "op.scan": { "en-US": "Scan", "pt-BR": "Varredura" },
   "opDesc.scan": {

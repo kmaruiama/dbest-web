@@ -1,5 +1,10 @@
 package dbest
 
+import ibd.table.btree.BTreeTable
+import ibd.table.prototype.BasicDataRow
+import ibd.table.prototype.Prototype
+import ibd.table.prototype.column.IntegerColumn
+import ibd.table.prototype.metadata.Metadata
 import java.nio.file.Files
 import java.nio.file.Path
 import org.http4k.core.Method
@@ -42,6 +47,23 @@ fun orders(): MemorySpec =
             mapOf("id" to 12, "user_id" to 3, "total" to 900),
         ),
     )
+
+fun numbers(dir: Path, count: Int): BTreeSpec {
+    val prototype = Prototype()
+    prototype.addColumn(IntegerColumn("id", 4, Metadata.PRIMARY_KEY))
+    prototype.addColumn(IntegerColumn("v", 4, Metadata.NONE))
+    val table = BTreeTable(null, dir.toString(), "nums.dat", 1_000)
+    table.create(prototype, 4096)
+    for (id in 1..count) {
+        val row = BasicDataRow()
+        row.setInt("id", id)
+        row.setInt("v", id % 7)
+        table.addRecord(row, true)
+    }
+    table.flushDB()
+    table.close()
+    return BTreeSpec("nums", dir.resolve("nums.dat").toString())
+}
 
 fun demoCommands(): List<Command> =
     listOf(

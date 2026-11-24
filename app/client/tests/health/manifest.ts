@@ -6,6 +6,7 @@ export type Step =
       as: string;
       table: FixtureName;
       alias: string;
+      parallel?: boolean;
     }
   | {
       as: string;
@@ -681,5 +682,19 @@ export const CASES: HealthCase[] = [
     root: "subject",
     show: ["condition.EVAL"],
     expect: ["false"],
+  },
+  {
+    chip: "gather",
+    name: "gather returns each thread's part of a parallel B-tree in key order",
+    tables: ["empTree"],
+    steps: [
+      { as: "src", table: "empTree", alias: "e", parallel: true },
+      filterOn("small", "src", "e.id", "LTE", "4"),
+      op("subject", "gather", ["small"], [{ at: "threads", int: 3 }]),
+    ],
+    root: "subject",
+    show: ["e.name", "e.dept"],
+    expect: ["ana/10", "bob/20", "cid/10", "dan/40"],
+    ordered: true,
   },
 ];

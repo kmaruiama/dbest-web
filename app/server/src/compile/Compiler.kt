@@ -13,6 +13,7 @@ import dbest.JoinType.RIGHT_ANTI
 import dbest.JoinType.RIGHT_SEMI
 import engine.exceptions.DataBaseException
 import ibd.query.ColumnDescriptor
+import ibd.query.Gather
 import ibd.query.Operation
 import ibd.query.binaryop.conditional.Exists
 import ibd.query.binaryop.conditional.LogicalAnd
@@ -55,6 +56,7 @@ import ibd.query.lookup.LiteralElement
 import ibd.query.lookup.LookupFilter
 import ibd.query.lookup.SingleColumnLookupFilter
 import ibd.query.sourceop.IndexScan
+import ibd.query.sourceop.ParallelIndexScan
 import ibd.query.unaryop.AutoIncrement
 import ibd.query.unaryop.DuplicateRemoval
 import ibd.query.unaryop.Explode
@@ -77,6 +79,7 @@ import ibd.query.unaryop.filter.Condition as EngineCondition
 import ibd.query.unaryop.filter.Filter
 import ibd.query.unaryop.sort.Sort
 import ibd.table.ComparisonTypes
+import ibd.table.btree.BTreeTable
 import java.lang.reflect.InvocationTargetException
 import kotlinx.serialization.Serializable
 
@@ -171,11 +174,27 @@ private fun engineError(failure: Throwable): EngineException {
 
 private fun compile(query: Query, tables: OpenTables): Operation {
     val node = query.node
-    val inputs = query.inputs.map({ input -> compile(input, tables) })
+    val inputs by lazy { query.inputs.map({ input -> compile(input, tables) }) }
     return when (node) {
         is TableNode -> {
             val spec = query.table as TableSpec
-            IndexScan(node.alias, tables.getOrPut(spec, { openTable(spec) }))
+            val table = tables.getOrPut(spec, { openTable(spec) })
+            when {
+                !node.parallel -> IndexScan(node.alias, table)
+                table is BTreeTable -> ParallelIndexScan(node.alias, table)
+                else -> throw PlanError("So tabelas B-tree podem ser lidas em paralelo")
+            }
+        }
+        is GatherNode -> {
+            val input = query.inputs[0]
+            val below = nodesOf(input)
+            if (below.any({ inner -> inner is GatherNode })) {
+                throw PlanError("Gather nao pode ter outro Gather abaixo dele")
+            }
+            if (below.none({ inner -> inner is TableNode && inner.parallel })) {
+                throw PlanError("Gather precisa de uma tabela paralela abaixo dele")
+            }
+            Gather(*List(node.threads, { compile(input, tables) }).toTypedArray())
         }
         is ConditionNode -> named(EngineCondition(lookupFilter(node.condition)), node.alias)
         is ReferenceNode -> named(Reference(node.columns.toTypedArray()), node.alias)
@@ -205,6 +224,9 @@ private fun compile(query: Query, tables: OpenTables): Operation {
         is CrossNode -> make(classOf(node), inputs)
     }
 }
+
+private fun nodesOf(query: Query): List<Node> =
+    listOf(query.node) + query.inputs.flatMap({ input -> nodesOf(input) })
 
 private fun named(operation: Operation, alias: String): Operation {
     operation.dataSourceAlias = alias
@@ -284,7 +306,8 @@ private fun classOf(node: Node): Class<out Operation> =
 
 fun engineClass(node: Node): Class<out Operation>? =
     when (node) {
-        is TableNode -> IndexScan::class.java
+        is TableNode -> if (node.parallel) ParallelIndexScan::class.java else IndexScan::class.java
+        is GatherNode -> Gather::class.java
         is ConditionNode -> EngineCondition::class.java
         is ReferenceNode -> Reference::class.java
         is FilterNode -> Filter::class.java

@@ -1,5 +1,6 @@
 package dbest
 
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialInfo
 import kotlinx.serialization.SerialName
@@ -157,9 +158,14 @@ sealed interface UnaryNode : Node
 
 sealed interface BinaryNode : Node
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 @SerialName("table")
-data class TableNode(val table: TableId, val alias: String) : SourceNode {
+data class TableNode(
+    val table: TableId,
+    val alias: String,
+    @EncodeDefault(EncodeDefault.Mode.NEVER) val parallel: Boolean = false,
+) : SourceNode {
     init {
         require(alias.isNotBlank(), { "O alias nao pode ser uma string vazia" })
     }
@@ -299,6 +305,14 @@ data class RemoveColumnsNode(
 @Serializable @SerialName("scan") data object ScanNode : UnaryNode
 
 @Serializable
+@SerialName("gather")
+data class GatherNode(val threads: Int = 4) : UnaryNode {
+    init {
+        require(threads in 1..64, { "Gather precisa de 1 a 64 threads" })
+    }
+}
+
+@Serializable
 @SerialName("join")
 data class JoinNode(
     val type: JoinType = JoinType.INNER,
@@ -354,6 +368,7 @@ fun aliasOf(node: Node): String? =
         is MemoizeNode,
         is HashIndexNode,
         is ScanNode,
+        is GatherNode,
         is JoinNode,
         is CrossNode,
         is ExistsNode -> null

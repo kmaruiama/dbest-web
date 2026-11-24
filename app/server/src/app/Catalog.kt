@@ -25,6 +25,7 @@ enum class OperatorCategory {
     @SerialName("SemiAntiJoins") SEMI_ANTI_JOINS,
     @SerialName("Sets") SETS,
     @SerialName("Boolean") BOOLEAN,
+    @SerialName("Parallel") PARALLEL,
 }
 
 @Serializable
@@ -217,6 +218,7 @@ val CHIPS: List<Chip> =
             "?",
             OperatorCategory.BOOLEAN,
             ConditionNode(Comparison(PLACEHOLDER, CompareOp.EQ, PLACEHOLDER))),
+        chip("gather", "⇶", OperatorCategory.PARALLEL, GatherNode()),
     )
 
 val CATALOG: Catalog = Catalog(OperatorCategory.entries, operatorTypes(), CHIPS)
@@ -236,7 +238,9 @@ fun captions(session: Session): Map<NodeId, Caption> =
 
 fun expression(session: Session, node: Node): String =
     when (node) {
-        is TableNode -> session.tables.get(node.table)?.name ?: ""
+        is TableNode ->
+            (session.tables.get(node.table)?.name ?: "") + if (node.parallel) " ∥" else ""
+        is GatherNode -> "${node.threads} threads"
         is FilterNode -> conditionText(node.condition)
         is ConditionNode -> conditionText(node.condition)
         is ReferenceNode -> node.columns.joinToString(", ")
@@ -289,6 +293,8 @@ private fun join(type: JoinType, algorithm: JoinAlgorithm): Node =
 
 private fun operatorTypes(): Map<String, OperatorType> {
     val types = LinkedHashMap<String, OperatorType>()
+    val parallel = fieldsFor("table").filter({ field -> field.at == "parallel" })
+    types.put("table", OperatorType(Arity.SOURCE, true, parallel))
     for (chip in CHIPS) {
         if (chip.type in types) {
             continue
